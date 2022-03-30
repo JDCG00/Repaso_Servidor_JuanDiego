@@ -45,6 +45,6 @@
 </html>
 <?php
     if (isset($_POST['enviar'])) {
-       
+       $actividad = $_POST['actividad'];
     }
 ?>
