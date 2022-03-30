@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Repaso Formulario, arrays, funciones v1</h2>
-    <form action="inicio.php" method="post">
+    <form action="#" method="POST">
         <select name="categorias">
             <option value="navidad">Navidad</option>
             <option value="semana_ignaciana">Semana Ignaciana</option>
@@ -16,6 +16,9 @@
         </select>
         <br>
         <h3>Etapas</h3>
+        <label for="actvidad">Nombre actividad: </label>
+        <input type="text" name="actividad">
+        <br>
         <label for="primaria">Primaria: </label>
         <input type="checkbox" name="primaria">
         <br>
@@ -33,10 +36,15 @@
         <br>
         <br>
         <label for="clase">Clase: </label>
-        <input type="checkbox" name="clase">
+        <input type="radio" name="clase">
         <br>
         <br>
         <input type="submit" name="enviar" value="Enviar">
     </form>    
 </body>
 </html>
+<?php
+    if (isset($_POST['enviar'])) {
+       
+    }
+?>
