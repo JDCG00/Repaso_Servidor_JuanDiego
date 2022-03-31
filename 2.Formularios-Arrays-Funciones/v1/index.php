@@ -49,7 +49,12 @@
     if (isset($_POST['enviar'])) {
         //Imprime lo que se haya elegido en el input de categorías, y lo que se haya escrito en el input de actividad.
         echo "<br>".$_POST['categorias']."<br>";
-        echo $_POST['actividad']."<br>";
+        //Si está vacío el elemento actividad no hace nada, sino, es decir, si hay contenido, imprime lo que haya en el input actividad.
+        if (empty($_POST['actividad'])) {
+            echo "Debe poner un nombre de actividad";
+        }else{
+            echo $_POST['actividad']."<br>";
+        }     
         //Si existe etapas[], recorre el array $_POST['etapas'] e imprime el valor de los elementos del array.
         if (isset($_POST['etapas'])) {
             foreach ($_POST['etapas'] as $valor) {

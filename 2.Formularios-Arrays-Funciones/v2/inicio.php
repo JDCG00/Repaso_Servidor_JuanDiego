@@ -1,13 +1,18 @@
 <?php
     if (isset($_POST['enviar'])) {
-        foreach ($_POST as $i => $valor) {
-            $array[$i] = $valor;
+        
+        $array['Categoría'] = $_POST['categorias'];
+        if (empty($_POST['actividad'])) {
+        }else{
+            $array['Actividad'] = $_POST['actividad'];
         }
-        print_r($array);
-        echo "<br>";
-        foreach ($array['etapas'] as $value) {
-            echo("$value <br>");
+        foreach ($_POST['etapas'] as $valor) {
+            $array[] = $valor;
         }
-        print_r($_POST);
+        if (empty($_POST['actividad_de_seccion'])) {
+        }else{
+            $array['actividad_de_seccion'] = $_POST['actividad_de_seccion'];
+        }
+        print_r($array);      
     }
 ?>
