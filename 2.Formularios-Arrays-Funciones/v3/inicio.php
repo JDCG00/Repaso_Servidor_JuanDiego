@@ -25,10 +25,11 @@
             if (isset($_POST['actividad_de_seccion'])) {
                 $array['actividad_de_seccion'] = $_POST['actividad_de_seccion'];
             }
+            //Devuelve/retorna el array $array.
             return $array;
         }
 
-        //Creación de la función mostrar datos, que mostrará los datos obtenidos del array.
+        //Creación de la función mostrar datos, que mostrará los datos obtenidos del array. (Recoge el array $array retornado anteriormente.)
         function mostrarDatos($array){
             //Recorre el array $array e imprime el valor de los elementos del array.
             foreach ($array as $valorArray) {
