@@ -4,43 +4,42 @@
     class Inicio{
         //Creación de la función recoger datos, que recoge los datos de todos los inputs utilizados en el formulario, y los guarda en un array para su posterior uso.
         function recogerDatos(){
-            //Crear el array $array, añadiendo el contenido del input categoría, en este caso "Categoría" de índice y lo que recoga por $_POST del input como valor.
+            //Crear el array $formulario, añadiendo el contenido del input categoría, en este caso "Categoría" de índice y lo que recoga por $_POST del input como valor.
             
-            $array = $_POST;
-            unset($array['enviar']);
+            $formulario = $_POST;
+            unset($formulario['enviar']);
             
-            if (empty($array['actividad'])) {
+            if (empty($formulario['actividad'])) {
                 echo "<h4>Debe poner un nombre de actividad</h4>";
-                unset($array['actividad']);
+                unset($formulario['actividad']);
             }
 
-            if (!isset($array['etapas'])) {
+
+            if (isset($formulario['etapas'])) {
+                extract($formulario);
+                foreach ($etapas as $valorEtapas) {
+                    $formulario[] = $valorEtapas;
+                }
+                unset($formulario['etapas']);
+            }else{
                 echo "<h4>Debe seleccionar al menos una etapa</h4>";
             }
+            
 
-            if (!isset($array['actividad_de_seccion'])) {
-                echo $array['actividad_de_seccion'] = "Para alumnos";
+            if (!isset($formulario['actividad_de_seccion'])) {
+                $formulario['actividad_de_seccion'] = "Para alumnos";
             }
 
-            extract($array);
-            foreach ($etapas as $value) {
-                echo "$value <br>";
-            }
 
-            print_r($array);
-
-
-            //Devuelve/retorna el array $array.
-            return $array;
+            //Devuelve/retorna el array $formulario.
+            return $formulario;
         }
 
-        //Creación de la función mostrar datos, que mostrará los datos obtenidos del array. (Recoge el array $array retornado anteriormente.)
-        function mostrarDatos($array){
-            //Recorre el array $array e imprime el valor de los elementos del array.
-            foreach ($array as $valorArray) {
-                if (isset($array['etapas'])) {
-                    echo  "$valorArray <br>";
-                }
+        //Creación de la función mostrar datos, que mostrará los datos obtenidos del array. (Recoge el array $formulario retornado anteriormente.)
+        function mostrarDatos($formulario){
+            //Recorre el array $formulario e imprime el valor de los elementos del array.
+            foreach ($formulario as $valorFormulario) {
+                echo  "$valorFormulario <br>";
             }
         }
     }
