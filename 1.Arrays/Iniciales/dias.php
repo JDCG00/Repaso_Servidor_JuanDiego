@@ -17,20 +17,20 @@
 
     //El count lo que hace es contar todos los elementos que hay en un array, es decir, saca el número total de elementos de un array.
     
-    //Recorro el array con un for más un count como límite, imprimiendo por pantalla el índice(números) y el valor(días).
+    //Recorro el array con un for más un count para saber el número total de elementos que contiene el array y así saber el nuḿero de veces que se repite el bucle, en este caso, el total(5) - 1, imprimiendo por pantalla el índice(números) y el valor(días).
     echo "<h4>Días de la semana con for con count con índice.</h4>";
     for ($i=0; $i < count($dias); $i++) { 
         echo $i ."&nbsp" . $dias[$i] ."<br>";
     }
-    //Recorro el array con un for más un count como límite, sin índice, imprimiendo por pantalla solo el valor(días).
+    //Recorro el array con un for más un count para saber el número total de elementos que contiene el array y así saber el nuḿero de veces que se repite el bucle, en este caso, el total(5) - 1, sin índice, imprimiendo por pantalla solo el valor(días).
     echo "<h4>Días de la semana con for con count sin índice.</h4>";
     for ($i=0; $i < count($dias); $i++) { 
         echo $dias[$i]."<br>";
     }
     //Recorro el array sacando todos los elementos, tanto el índice(números), como el valor de este(días).
     echo "<h4>Días de la semana con foreach con índice.</h4>";
-    foreach ($dias as $i => $valor) {
-        echo $i ."&nbsp" . $valor ."<br>";
+    foreach ($dias as $indice => $valor) {
+        echo $indice ."&nbsp" . $valor ."<br>";
     }
     //Recorro el array sacando solo el valor de los elementos, los días de la semana.
     echo "<h4>Días de la semana con foreach sin índice.</h4>";

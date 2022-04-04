@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repaso Formulario, arrays, funciones v1</title>
+    <title>Repaso Formulario, arrays, funciones v3 con unset</title>
 </head>
 <body>
-    <h2>Repaso Formulario, arrays, funciones v1</h2>
+    <h2>Repaso Formulario, arrays, funciones v3 con unset</h2>
     <form action="#" method="POST">
         <h3>Categorías</h3>
         <select name="categorias">
@@ -45,29 +45,16 @@
 </body>
 </html>
 <?php
-    //Si se pulsa el botón enviar realiza las siguientes acciones.
+    //Si existe la variable $_POST['enviar'], es decir, si se pulsa enviar, realiza la siguiente acción.
     if (isset($_POST['enviar'])) {
-        //Imprime lo que se haya elegido en el input de categorías, y lo que se haya escrito en el input de actividad.
-        echo "<br>".$_POST['categorias']."<br>";
-        //Si está vacío el elemento actividad pone que el campo se debe rellenar, sino (es decir, si hay contenido) imprime lo que haya en el input actividad.
-        if (empty($_POST['actividad'])) {
-            echo "<h4>Debe poner un nombre de actividad</h4>";
-        }else{
-            echo $_POST['actividad']."<br>";
-        }     
-        //Si existe etapas[], recorre el array $_POST['etapas'] e imprime el valor de los elementos del array, si no se selecciona nada, se manda un mensaje de que debe seleccionar al menos un valor.
-        if (isset($_POST['etapas'])) {
-            foreach ($_POST['etapas'] as $valor) {
-                echo "$valor <br>";
-            }
-        }else{
-            echo "<h4>Debe seleccionar al menos una etapa</h4>";
-        }
-        //Si existe actividad_de_seccion, recorre el array $_POST['actividad_de_seccion'] e imprime el valor si está seleccionado, sino guarda que es para alumnos.
-        if (isset($_POST['actividad_de_seccion'])) {
-            echo $_POST['actividad_de_seccion']."<br>";
-        }else {
-            echo "Para alumnos";
-        }
+        //Se recoge el archivo inicio.php con todo lo que este contiene.
+        require("inicio.php");
+        //Se utiliza la clase Inicio.
+        $inicio = new Inicio();
+        
+        //Se crea la variable $array que recoge el array retornado de la funcion recogerDatos, y ejecuta la función recogerDatos.
+        $array = $inicio -> recogerDatos();
+        //Se ejecuta la función mostrar datos, que muestra los valores de la variable creada anteriormente llamada $array, que es dónde se haya el array retornado.
+        $inicio -> mostrarDatos($array);
     }
 ?>
