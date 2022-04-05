@@ -1,7 +1,7 @@
 <?php
 
     class Inicio{
-        private $meses;
+        private $meses; 
 
         private function añadir(){
             $this -> meses = array(
