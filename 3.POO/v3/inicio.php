@@ -1,9 +1,9 @@
 <?php
 
     class Inicio{
-        private $meses; 
+        public $meses; 
 
-        private function añadir(){
+        public function añadir(){
             $this -> meses = array(
                 "<b>Enero</b>" => 31,
                 "<b>Febrero</b>" => 28,
@@ -18,15 +18,6 @@
                 "<b>Noviembre</b>" => 31,
                 "<b>Diciembre</b>" => 30
             );
-        }
-        public function mostrar(){
-            $this -> añadir();
-            
-            $arrayMeses = $this -> meses;
-        
-            foreach ($arrayMeses as $indice => $valor) {
-                echo "$indice &nbsp $valor <br>";
-            }
         }
     }
 ?>

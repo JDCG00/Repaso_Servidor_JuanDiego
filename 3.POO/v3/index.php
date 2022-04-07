@@ -13,6 +13,9 @@
 <?php
     require "inicio.php";
     $inicio = new Inicio();
+    $inicio -> añadir();
 
-    $inicio -> mostrar();
+    foreach ($inicio -> meses as $indice => $valor) {
+        echo "$indice &nbsp $valor <br>";
+    }
 ?>
