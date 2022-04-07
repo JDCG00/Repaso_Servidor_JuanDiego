@@ -11,8 +11,11 @@
 </body>
 </html>
 <?php
+    //Se recoge el archivo inicio.php con todo lo que este contiene.
     require "inicio.php";
+    //Se utiliza la clase Inicio.
     $inicio = new Inicio();
 
+    //Se llama al método mostrar del objeto inicio.
     $inicio -> mostrar();
 ?>

@@ -11,9 +11,11 @@
 </body>
 </html>
 <?php
+    //Se recoge el archivo inicio.php con todo lo que este contiene.
     require "inicio.php";
+    //Se utiliza la clase Inicio.
     $inicio = new Inicio();
-    
+    //Se declara la variable $meses que contiene un array cuyos índices son los meses con sus respectivos días como valor.
     $meses = array(
         "<b>Enero</b>" => 31,
         "<b>Febrero</b>" => 28,
@@ -28,5 +30,6 @@
         "<b>Noviembre</b>" => 31,
         "<b>Diciembre</b>" => 30
     );
+    //Se llama a mostrar que a su vez pasa el array en la variable $meses.
     $inicio -> mostrar($meses);
 ?>

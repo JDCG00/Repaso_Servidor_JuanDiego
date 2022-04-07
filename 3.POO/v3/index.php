@@ -11,10 +11,14 @@
 </body>
 </html>
 <?php
+    //Se recoge el archivo inicio.php con todo lo que este contiene.
     require "inicio.php";
+    //Se utiliza la clase Inicio.
     $inicio = new Inicio();
+    //Se llama al método añadir del objeto inicio.
     $inicio -> añadir();
 
+    //Se recorre el array del atributo meses y se imprime el índice y el valor de cada elemento del array.
     foreach ($inicio -> meses as $indice => $valor) {
         echo "$indice &nbsp $valor <br>";
     }
