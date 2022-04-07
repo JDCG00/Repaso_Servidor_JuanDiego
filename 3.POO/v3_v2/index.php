@@ -16,6 +16,8 @@
     //Se crea el objeto inicio instanciando la clase Inicio.
     $inicio = new Inicio();
 
-    //Se llama al método mostrar del objeto inicio.
-    $inicio -> mostrar();
+    //Se recorre el array del método añadir y se imprime el índice y el valor de cada elemento del array.
+    foreach ($inicio -> añadir() as $indice => $valor) {
+        echo "$indice &nbsp $valor <br>";
+    }
 ?>

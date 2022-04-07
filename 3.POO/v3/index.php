@@ -13,7 +13,7 @@
 <?php
     //Se recoge el archivo inicio.php con todo lo que este contiene.
     require "inicio.php";
-    //Se utiliza la clase Inicio.
+    //Se crea el objeto inicio instanciando la clase Inicio.
     $inicio = new Inicio();
     //Se llama al método añadir del objeto inicio.
     $inicio -> añadir();
