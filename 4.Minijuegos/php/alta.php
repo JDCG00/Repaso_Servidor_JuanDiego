@@ -31,7 +31,7 @@
             <div class="input-container ic2">
                 <input class="input" type="text" placeholder=" " name="enlace" />
                 <div class="cut cut-short"></div>
-                <label for="enlace" class="placeholder">Enlace</>
+                <label for="enlace" class="placeholder">Enlace</label>
             </div>
             <input class="submit" type="submit" name="enviar" value="Enviar Alta">
         </form>
