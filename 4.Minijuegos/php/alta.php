@@ -41,8 +41,8 @@
         </form>
         <?php 
             if (isset($_POST['enviar'])) {
-                if (empty($_POST['nombre'] && $_POST['icono'] && $_POST['enlance'])) {
-                    echo "<div class=error>Debe rellenar todos los campos del formulario.</div>";
+                if (empty($_POST['nombre'] && $_POST['enlace'])) {
+                    echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
                 }else {
                     $conex -> query("INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', '".$_POST['icono']."', '".$_POST['enlace']."');");
                 }
