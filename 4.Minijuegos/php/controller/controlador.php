@@ -1,8 +1,7 @@
 <?php
-    class Controlador    {
+    class Controlador{
         function alta(){
             require('../view/alta.php');
-            $icono;
             if (isset($_POST['enviar'])) {                
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
                     if (empty($_POST['icono'])) {
@@ -10,19 +9,27 @@
                     }else {
                         $icono = "'".$_POST['icono']."'";
                     }
+                    require('../model/modelo.php');
+                    $obj = new Modelo;                    
+                    $obj -> insertar($icono);
                 }
             }            
-            require('../model/modelo.php');
-            $obj = new Modelo;
-            $obj -> insertar($icono);
+            
         }
         function listar(){
-            echo "adsada";
+            require('../view/listar.php');
+            require('../model/modelo.php');
+            $obj = new Modelo;
+            
+            foreach ($obj -> consultar() as $valor) {
+                echo $valor['nombre'] .'<br>';
+                echo $valor['icono'] .'<br>';
+                echo $valor['ruta'] .'<br>';
+            }
         }
     }
 
     $obj = new Controlador;
-
 
     switch ($_GET['accion']) {
         case 'alta':

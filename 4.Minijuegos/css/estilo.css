@@ -25,7 +25,7 @@ nav{
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    width: 350px;
+    width: 500px;
     justify-content: space-between;
 }
 
@@ -193,6 +193,8 @@ form {
 .submit:active {
     background-color: #06b;
 }
+
+/*-----------*/
 .error {
     color: rgb(253, 0, 0);
     font-family: sans-serif;
@@ -200,4 +202,14 @@ form {
     font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
+}
+
+.lista {
+    background-color: #15172b;
+    color: #eee;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 520px;
+    padding: 20px;
+    width: 320px;
 }

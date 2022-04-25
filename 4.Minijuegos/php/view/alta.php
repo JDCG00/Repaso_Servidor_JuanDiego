@@ -12,6 +12,7 @@
         <ul class="nav nav-boton">    
             <li><a href="../../index.html" class="nav-link activado">Inicio</a></li>
             <li><a href="#" class="nav-link">Alta de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
         </ul>
     </nav>
     <div class="contenedor">
