@@ -44,7 +44,18 @@
                 if (empty($_POST['nombre'] && $_POST['enlace'])) {
                     echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
                 }else {
-                    $conex -> query("INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', '".$_POST['icono']."', '".$_POST['enlace']."');");
+                    if (empty($_POST['icono'])) {
+                        $icono = 'NULL';
+                    }else {
+                        $icono = "'".$_POST['icono']."'";
+                    }
+
+                    $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
+                    try {
+                        $conex -> query($consulta);
+                    } catch (mysqli_sql_exception $e) {
+                        echo $e->getMessage();
+                    }
                 }
             }
         ?>
