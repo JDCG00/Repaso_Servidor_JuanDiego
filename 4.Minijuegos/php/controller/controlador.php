@@ -20,11 +20,10 @@
             require('../view/listar.php');
             require('../model/modelo.php');
             $obj = new Modelo;
-            
-            foreach ($obj -> consultar() as $valor) {
-                echo $valor['nombre'] .'<br>';
-                echo $valor['icono'] .'<br>';
-                echo $valor['ruta'] .'<br>';
+            foreach ($obj -> consultar() as $indice => $valor) {
+                echo '<b>Nombre: </b>'.$valor['nombre'] .'<br>';
+                echo '<b>Icono: </b>'.$valor['icono'] .'<br>';
+                echo '<b>Ruta: </b>'.$valor['ruta'] .'<br>';
             }
         }
     }
