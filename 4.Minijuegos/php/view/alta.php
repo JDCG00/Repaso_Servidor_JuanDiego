@@ -1,20 +1,16 @@
-<?php
-    require('config_db.php');
-    $conex = new mysqli(servidor, usuario, pw, bd);      
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../../css/estilo.css">
     <title>CRUD Repaso Minijuegos Juan Diego</title>
 </head>
 <body>
     <nav>
         <ul class="nav nav-boton">    
-            <li><a href="../index.html" class="nav-link activado">Inicio</a></li>
+            <li><a href="../../index.html" class="nav-link activado">Inicio</a></li>
             <li><a href="#" class="nav-link">Alta de Minijuegos</a></li>
         </ul>
     </nav>
@@ -39,23 +35,10 @@
             </div>
             <input class="submit" type="submit" name="enviar" value="Enviar Alta">
         </form>
-        <?php 
+        <?php
             if (isset($_POST['enviar'])) {
                 if (empty($_POST['nombre'] && $_POST['enlace'])) {
                     echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
-                }else {
-                    if (empty($_POST['icono'])) {
-                        $icono = 'NULL';
-                    }else {
-                        $icono = "'".$_POST['icono']."'";
-                    }
-
-                    $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
-                    try {
-                        $conex -> query($consulta);
-                    } catch (mysqli_sql_exception $e) {
-                        echo $e->getMessage();
-                    }
                 }
             }
         ?>
