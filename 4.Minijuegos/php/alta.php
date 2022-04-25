@@ -1,3 +1,7 @@
+<?php
+    require('config_db.php');
+    $conex = new mysqli(servidor, usuario, pw, bd);      
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,15 +39,15 @@
             </div>
             <input class="submit" type="submit" name="enviar" value="Enviar Alta">
         </form>
+        <?php 
+            if (isset($_POST['enviar'])) {
+                if (empty($_POST['nombre'] && $_POST['icono'] && $_POST['enlance'])) {
+                    echo "<div class=error>Debe rellenar todos los campos del formulario.</div>";
+                }else {
+                    $conex -> query("INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', '".$_POST['icono']."', '".$_POST['enlace']."');");
+                }
+            }
+        ?>
     </div>    
 </body>
 </html>
-<?php
-    require('config_db.php');
-    $conex = new mysqli(servidor, usuario, pw, bd);
-
-    if (isset($_POST['enviar'])) {
-        $conex -> query("INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', '".$_POST['icono']."', '".$_POST['enlace']."');");
-    }
-        
-?>
