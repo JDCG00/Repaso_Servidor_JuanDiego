@@ -39,7 +39,6 @@
         }
         function delete(){
             $consulta2 = "DELETE FROM minijuegos WHERE idMinijuego = ".$_GET['id'].";";
-            echo $consulta2;
             $this -> conex ->query($consulta2);
 
         }
