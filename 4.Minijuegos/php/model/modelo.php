@@ -11,8 +11,13 @@
             $this->conex = new mysqli(servidor, usuario, pw, bd);
         }        
 
-        function insertar($icono){
-                     
+        function insertar(){
+            if (empty($_POST['icono'])) {
+                $icono = 'NULL';
+            }else {
+                $icono = "'".$_POST['icono']."'";
+            } 
+
             $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
             try {
                 $this->conex -> query($consulta);

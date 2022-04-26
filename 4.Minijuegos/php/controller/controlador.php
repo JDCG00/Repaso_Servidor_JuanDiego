@@ -13,12 +13,7 @@
             require('../view/alta.php');
             if (isset($_POST['enviar'])) {                
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
-                    if (empty($_POST['icono'])) {
-                        $icono = 'NULL';
-                    }else {
-                        $icono = "'".$_POST['icono']."'";
-                    }                    
-                    $this ->modelo -> insertar($icono);
+                    $this ->modelo -> insertar();
                 }
             }            
             
