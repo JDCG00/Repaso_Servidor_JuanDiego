@@ -1,9 +1,10 @@
 <?php
-    require('../config_db.php');
+    require_once('../config_db.php');
 
     class Modelo{
         
-        private $conex = null;
+        private $conex;
+        public $filas;
 
         function __construct(){
             $this->conex = new mysqli(servidor, usuario, pw, bd);
@@ -20,17 +21,18 @@
                      
         }
         function consultar(){
-            $consulta = "SELECT nombre, icono, ruta FROM minijuegos;";
+            $consulta = "SELECT * FROM minijuegos;";
             
             $resultado = $this -> conex -> query($consulta);
             // $resultado -> fetch_array();
             while($fila = $resultado->fetch_array())
             {
-                $filas[] = $fila;
+                $this -> filas[] = $fila;
             }
-            return $filas;
+            $this->filas;
+        }
+        function borrar(){
+            
         }
     }
-    
-    
 ?>

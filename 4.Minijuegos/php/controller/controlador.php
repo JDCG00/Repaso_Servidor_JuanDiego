@@ -1,5 +1,13 @@
 <?php
     class Controlador{
+        public $modelo;
+        public $filas;
+        function __construct(){
+            require_once('../model/modelo.php');
+            $this->modelo = new Modelo;
+
+        }
+        
         function alta(){
             require('../view/alta.php');
             if (isset($_POST['enviar'])) {                
@@ -8,34 +16,33 @@
                         $icono = 'NULL';
                     }else {
                         $icono = "'".$_POST['icono']."'";
-                    }
-                    require('../model/modelo.php');
-                    $obj = new Modelo;                    
-                    $obj -> insertar($icono);
+                    }                    
+                    $this ->modelo -> insertar($icono);
                 }
             }            
             
         }
         function listar(){
-            require('../view/listar.php');
-            require('../model/modelo.php');
-            $obj = new Modelo;
-            foreach ($obj -> consultar() as $indice => $valor) {
-                echo '<b>Nombre: </b>'.$valor['nombre'] .'<br>';
-                echo '<b>Icono: </b>'.$valor['icono'] .'<br>';
-                echo '<b>Ruta: </b>'.$valor['ruta'] .'<br>';
-            }
+            require_once('../view/listar.php');
+            $this -> modelo-> consultar();
+            $this->filas = $this -> modelo -> filas;
+        }
+        function borrar(){
+            require_once('../view/borrar.php');
         }
     }
 
-    $obj = new Controlador;
+    $controlador = new Controlador;
 
     switch ($_GET['accion']) {
         case 'alta':
-            $obj->alta();
+            $controlador->alta();
             break;
         case 'listar':
-            $obj -> listar();
+            $controlador -> listar();
+            break;
+        case 'borrar':
+            $controlador -> borrar();
             break;
         default:
             echo "<h1>Acción no encontrada.</h1>";

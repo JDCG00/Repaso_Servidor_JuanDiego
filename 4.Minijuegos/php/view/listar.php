@@ -17,9 +17,30 @@
     </nav>
     <div class="contenedor">
         <div class="lista">
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Icono</th>
+                    <th>Ruta</th>
+                </tr>
             <?php
-                
+                require_once('../controller/controlador.php');
+                $controlador = new Controlador;
+                $controlador->listar();
+                $filas = $controlador->filas;
+                foreach ($filas as $valor) {
+                    echo "
+                            <tr>
+                                <td>".$valor['nombre']."</td>
+                                <td>".$valor['icono']."</td>
+                                <td>".$valor['ruta']."</td>
+                                <td><a href=../controller/controlador.php?accion=borrar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
+                                <td><a href=><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
+                            </tr>
+                        ";
+                }             
             ?>
+            </table>
         </div>        
     </div>    
 </body>

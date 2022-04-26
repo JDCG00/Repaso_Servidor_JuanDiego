@@ -205,11 +205,20 @@ form {
 }
 
 .lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #15172b;
     color: #eee;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 520px;
+    height: 550px;
     padding: 20px;
-    width: 320px;
+    width: 750px;
+}
+img{
+    width: 20px;
+}
+table{
+    border-spacing: 20px;
 }
