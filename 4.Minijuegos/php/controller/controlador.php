@@ -2,6 +2,7 @@
     class Controlador{
         public $modelo;
         public $filas;
+        public $filasBorrar;
         function __construct(){
             require_once('../model/modelo.php');
             $this->modelo = new Modelo;
@@ -29,6 +30,13 @@
         }
         function borrar(){
             require_once('../view/borrar.php');
+            $this -> modelo -> deleteListar();
+            $this -> filasBorrar = $this -> modelo ->filasBorrar;
+            if (isset($_POST['borrar'])) {
+                $this->modelo->delete();
+                header("Location:controlador.php?accion=listar");             
+            }            
+            
         }
     }
 

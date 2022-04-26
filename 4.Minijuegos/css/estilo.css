@@ -203,11 +203,20 @@ form {
     font-weight: 600;
     margin-top: 10px;
 }
+.correcto {
+    color: rgb(0, 253, 84);
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
 
 .lista {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #15172b;
     color: #eee;
     border-radius: 20px;
@@ -221,4 +230,7 @@ img{
 }
 table{
     border-spacing: 20px;
+}
+.formBorrar{
+    height: 60px;
 }

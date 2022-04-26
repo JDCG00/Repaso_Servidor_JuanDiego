@@ -40,6 +40,8 @@
             if (isset($_POST['enviar'])) {
                 if (empty($_POST['nombre'] && $_POST['enlace'])) {
                     echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
+                }else{
+                    echo "<div class=correcto>Datos introducidos correctamente.</div>";   
                 }
             }
         ?>

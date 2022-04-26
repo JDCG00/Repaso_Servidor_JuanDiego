@@ -28,17 +28,22 @@
                 $controlador = new Controlador;
                 $controlador->listar();
                 $filas = $controlador->filas;
-                foreach ($filas as $valor) {
-                    echo "
-                            <tr>
-                                <td>".$valor['nombre']."</td>
-                                <td>".$valor['icono']."</td>
-                                <td>".$valor['ruta']."</td>
-                                <td><a href=../controller/controlador.php?accion=borrar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
-                                <td><a href=><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
-                            </tr>
-                        ";
-                }             
+                if (isset($filas)) {
+                    foreach ($filas as $valor) {
+                        echo "
+                                <tr>
+                                    <td>".$valor['nombre']."</td>
+                                    <td>".$valor['icono']."</td>
+                                    <td>".$valor['ruta']."</td>
+                                    <td><a href=../controller/controlador.php?accion=borrar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
+                                    <td><a href=><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
+                                </tr>
+                            ";
+                    }
+                }else{
+                    echo "<div class=error>No existen valores.</div>";
+                }
+                            
             ?>
             </table>
         </div>        
