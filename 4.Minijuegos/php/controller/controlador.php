@@ -42,9 +42,10 @@
             $this -> modelo -> delete_update_Listar();
             $this -> filasModificar = $this -> modelo ->filasBorrarMod;
             if (isset($_POST['modificar'])) {
-                $this->modelo->update();
-                header("Location:controlador.php?accion=listar");             
-            }
+                if(!empty($_POST['nombre'] && $_POST['enlace'])) {
+                    $this->modelo->update();
+                }            
+            }            
         }
     }
 

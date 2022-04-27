@@ -44,6 +44,13 @@
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
                         </form>  
                 ";
+                if (isset($_POST['modificar'])) {
+                    if (empty($_POST['nombre'] && $_POST['enlace'])) {
+                        echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
+                    }else{
+                        echo "<div class=correcto>Datos introducidos correctamente.</div>";   
+                    }
+                }
             ?>                    
         </div>        
     </div>    
