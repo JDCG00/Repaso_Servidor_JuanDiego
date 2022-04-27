@@ -39,7 +39,7 @@
                 ?>
             </table>
             <form class="formBorrar" action="#" method="post">
-                <input class="submit" type="submit" value="Borrar minijuego." name="borrar">
+                <input class="submit" type="submit" value="Borrar minijuego" name="borrar">
             </form>            
         </div>        
     </div>    

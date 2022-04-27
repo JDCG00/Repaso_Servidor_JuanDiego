@@ -15,23 +15,36 @@
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
                     $this ->modelo -> insertar();
                 }
-            }            
-            
+            }
         }
-        function listar(){
+        function listarVista(){
             require_once('../view/listar.php');
+        }
+        function listar(){            
             $this -> modelo-> consultar();
             $this->filas = $this -> modelo -> filas;
         }
-        function borrar(){
+        function borrarVista(){
             require_once('../view/borrar.php');
-            $this -> modelo -> deleteListar();
-            $this -> filasBorrar = $this -> modelo ->filasBorrar;
+        }
+        function borrar(){
+            $this -> modelo -> delete_update_Listar();
+            $this -> filasBorrar = $this -> modelo ->filasBorrarMod;
             if (isset($_POST['borrar'])) {
                 $this->modelo->delete();
                 header("Location:controlador.php?accion=listar");             
-            }            
-            
+            }
+        }
+        function modificarVista(){
+            require_once('../view/modificar.php');
+        }
+        function modificar(){
+            $this -> modelo -> delete_update_Listar();
+            $this -> filasModificar = $this -> modelo ->filasBorrarMod;
+            if (isset($_POST['modificar'])) {
+                $this->modelo->update();
+                header("Location:controlador.php?accion=listar");             
+            }
         }
     }
 
@@ -42,10 +55,13 @@
             $controlador->alta();
             break;
         case 'listar':
-            $controlador -> listar();
+            $controlador -> listarVista();
             break;
         case 'borrar':
-            $controlador -> borrar();
+            $controlador -> borrarVista();
+            break;
+        case 'modificar':
+            $controlador -> modificarVista();
             break;
         default:
             echo "<h1>Acción no encontrada.</h1>";

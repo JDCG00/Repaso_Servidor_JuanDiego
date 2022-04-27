@@ -35,17 +35,27 @@
                 $this -> filas[] = $fila;
             }
         }
-        function deleteListar(){
+        function delete_update_Listar(){
             $consulta1 = "SELECT * FROM minijuegos WHERE idMinijuego=".$_GET['id'].";";
             
             $resultado = $this -> conex ->query($consulta1);
 
-            $this -> filasBorrar = $resultado -> fetch_array();
+            $this -> filasBorrarMod = $resultado -> fetch_array();
         }
         function delete(){
             $consulta2 = "DELETE FROM minijuegos WHERE idMinijuego = ".$_GET['id'].";";
             $this -> conex ->query($consulta2);
 
+        }
+        function update(){
+            if (empty($_POST['icono'])) {
+                $icono = 'NULL';
+            }else {
+                $icono = "'".$_POST['icono']."'";
+            }
+
+            $consulta = "UPDATE minijuegos SET nombre = '".$_POST['nombre']."', icono = $icono, ruta = '".$_POST['enlace']."' WHERE minijuegos.idMinijuego = ".$_GET['id'].";";;
+            $this -> conex -> query($consulta);
         }
     }
 ?>
