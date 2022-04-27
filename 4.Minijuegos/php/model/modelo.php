@@ -54,7 +54,7 @@
                 $icono = "'".$_POST['icono']."'";
             }
 
-            $consulta = "UPDATE minijuegos SET nombre = '".$_POST['nombre']."', icono = $icono, ruta = '".$_POST['enlace']."' WHERE minijuegos.idMinijuego = ".$_GET['id'].";";;
+            $consulta = "UPDATE minijuegos SET nombre = '".$_POST['nombre']."', icono = $icono, ruta = '".$_POST['enlace']."' WHERE minijuegos.idMinijuego = ".$_GET['id'].";";
             $this -> conex -> query($consulta);
         }
     }
