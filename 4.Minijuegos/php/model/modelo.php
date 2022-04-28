@@ -55,7 +55,11 @@
             }
 
             $consulta = "UPDATE minijuegos SET nombre = '".$_POST['nombre']."', icono = $icono, ruta = '".$_POST['enlace']."' WHERE minijuegos.idMinijuego = ".$_GET['id'].";";
-            $this -> conex -> query($consulta);
+            try {
+                $this->conex -> query($consulta);
+            } catch (mysqli_sql_exception $e) {
+                echo $e->getMessage();
+            }
         }
     }
 ?>
