@@ -22,7 +22,8 @@
                 $controlador = new Controlador;
                 $controlador->modificar();
                 $filas = $controlador->filasModificar;
-                echo "
+                if (isset($filas)) {
+                    echo "
                         <form action='#' method='post'>
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
@@ -43,14 +44,17 @@
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
                         </form>  
-                ";
-                if (isset($_POST['modificar'])) {
-                    if (empty($_POST['nombre'] && $_POST['enlace'])) {
-                        echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
-                    }else{
-                        echo "<div class=correcto>Datos introducidos correctamente.</div>";
-                        header("Location:controlador.php?accion=listar");  
+                    ";
+                    if (isset($_POST['modificar'])) {
+                        if (empty($_POST['nombre'] && $_POST['enlace'])) {
+                            echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
+                        }else{
+                            echo "<div class=correcto>Datos introducidos correctamente.</div>";
+                            header("Location:controlador.php?accion=listar");  
+                        }
                     }
+                }else{
+                    echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                 }
             ?>                    
         </div>        
