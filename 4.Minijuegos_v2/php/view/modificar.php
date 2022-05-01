@@ -10,19 +10,20 @@
 <body>
     <nav>
         <ul class="nav nav-boton">    
-            <li><a href="../../index.html" class="nav-link activado">Inicio</a></li>
+            <li><a href="../../index.html" class="nav-link">Inicio</a></li>
             <li><a href="../controller/controlador.php?accion=alta" class="nav-link">Alta de Minijuegos</a></li>
-            <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listar" class="nav-link activado">Listado de Minijuegos</a></li>
         </ul>
     </nav>
     <div class="contenedor">
-        <div class="lista">
-            <?php
+        <?php
+            if (isset($_GET['id'])) {
                 require_once('../controller/controlador.php');
                 $controlador = new Controlador;
                 $controlador->modificar();
                 $filas = $controlador->filasModificar;
-                echo "
+                if (isset($filas)) {
+                    echo "
                         <form action='#' method='post'>
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
@@ -43,16 +44,26 @@
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
                         </form>  
-                ";
-                if (isset($_POST['modificar'])) {
-                    if (empty($_POST['nombre'] && $_POST['enlace'])) {
-                        echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
-                    }else{
-                        echo "<div class=correcto>Datos introducidos correctamente.</div>";   
+                    ";
+                    if (isset($_POST['modificar'])) {
+                        if (empty($_POST['nombre'] && $_POST['enlace'])) {
+                            echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
+                        }else{
+                            echo "<div class=correcto>Datos introducidos correctamente.</div>";
+                            header("Location:controlador.php?accion=listar");  
+                        }
                     }
+                }else{
+                    echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                 }
-            ?>                    
-        </div>        
+            }else{
+                echo "
+                        <div class=lista>
+                            <div class=error>Error, no hay minijuego seleccionado.</div>
+                        </div>
+                    ";
+            }
+        ?>   
     </div>    
 </body>
 </html>

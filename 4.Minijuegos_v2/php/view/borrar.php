@@ -10,9 +10,9 @@
 <body>
     <nav>
         <ul class="nav nav-boton">    
-            <li><a href="../../index.html" class="nav-link activado">Inicio</a></li>
+            <li><a href="../../index.html" class="nav-link">Inicio</a></li>
             <li><a href="../controller/controlador.php?accion=alta" class="nav-link">Alta de Minijuegos</a></li>
-            <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listar" class="nav-link activado">Listado de Minijuegos</a></li>
         </ul>
     </nav>
     <div class="contenedor">
@@ -23,24 +23,31 @@
                     <th>Icono</th>
                     <th>Ruta</th>
                 </tr>
-                <?php
-                    require_once('../controller/controlador.php');
-                    $controlador = new Controlador;
-                    $controlador->borrar();
-                    $filas = $controlador->filasBorrar;
-                    
-                    echo "
-                            <tr>
-                                <td>".$filas['nombre']."</td>
-                                <td>".$filas['icono']."</td>
-                                <td>".$filas['ruta']."</td>
-                            </tr>
-                        ";   
+                <?php                                       
+                    if (isset($_GET['id'])) {
+                        require_once('../controller/controlador.php');
+                        $controlador = new Controlador; 
+                        $controlador->borrar();
+                        $filas = $controlador->filasBorrar;
+                        if (isset($filas)) {
+                            echo "
+                                <tr>
+                                    <td>".$filas['nombre']."</td>
+                                    <td>".$filas['icono']."</td>
+                                    <td>".$filas['ruta']."</td>
+                                </tr>
+                                <form class=formBorrar action=# method=post>
+                                    <input class=submit type=submit value=Borrar minijuego name=borrar>
+                                </form>   
+                            "; 
+                        }else{
+                            echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
+                        }                        
+                    }else{
+                        echo "<div class=error>Error, no hay minijuego seleccionado.</div>";                        
+                    }
                 ?>
-            </table>
-            <form class="formBorrar" action="#" method="post">
-                <input class="submit" type="submit" value="Borrar minijuego" name="borrar">
-            </form>            
+            </table>                     
         </div>        
     </div>    
 </body>

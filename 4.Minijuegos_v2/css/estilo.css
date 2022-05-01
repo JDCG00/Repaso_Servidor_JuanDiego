@@ -216,12 +216,11 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-color: #15172b;
     color: #eee;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 550px;
     padding: 20px;
     width: 750px;
 }
@@ -232,5 +231,5 @@ table{
     border-spacing: 20px;
 }
 .formBorrar{
-    height: 60px;
+    height: 120px;
 }
