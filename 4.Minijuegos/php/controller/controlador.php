@@ -50,23 +50,25 @@
     }
 
     $controlador = new Controlador;
-
-    switch ($_GET['accion']) {
-        case 'alta':
-            $controlador->alta();
-            break;
-        case 'listar':
-            $controlador -> listarVista();
-            break;
-        case 'borrar':
-            $controlador -> borrarVista();
-            break;
-        case 'modificar':
-            $controlador -> modificarVista();
-            break;
-        default:
-            echo "<h1>Acción no encontrada.</h1>";
-            break;
+    if (isset($_GET['accion'])) {
+        switch ($_GET['accion']) {
+            case 'alta':
+                $controlador->alta();
+                break;
+            case 'listar':
+                $controlador -> listarVista();
+                break;
+            case 'borrar':
+                $controlador -> borrarVista();
+                break;
+            case 'modificar':
+                $controlador -> modificarVista();
+                break;
+            default:
+                header("Location:../view/accion_no_encontrada.html");
+                break;
+        }
+    }else{
+        header("Location:../view/error.html");
     }
-
 ?>

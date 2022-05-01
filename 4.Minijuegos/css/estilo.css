@@ -216,7 +216,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-color: #15172b;
     color: #eee;
     border-radius: 20px;

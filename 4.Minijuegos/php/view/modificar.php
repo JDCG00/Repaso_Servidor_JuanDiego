@@ -16,8 +16,8 @@
         </ul>
     </nav>
     <div class="contenedor">
-        <div class="lista">
-            <?php
+        <?php
+            if (isset($_GET['id'])) {
                 require_once('../controller/controlador.php');
                 $controlador = new Controlador;
                 $controlador->modificar();
@@ -56,8 +56,14 @@
                 }else{
                     echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                 }
-            ?>                    
-        </div>        
+            }else{
+                echo "
+                        <div class=lista>
+                            <div class=error>Error, no hay minijuego seleccionado.</div>
+                        </div>
+                    ";
+            }
+        ?>   
     </div>    
 </body>
 </html>
