@@ -43,8 +43,6 @@
                         }else{
                             echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                         }                        
-                    }else{
-                        echo "<div class=error>Error, no hay minijuego seleccionado.</div>";                        
                     }
                 ?>
             </table>                     

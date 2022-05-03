@@ -54,7 +54,11 @@
                         }
                     }
                 }else{
-                    echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
+                    echo "
+                        <div class=lista>
+                            <div class=error>No existe el id: ".$_GET['id']."</div>
+                        </div>
+                    ";
                 }
             }else{
                 echo "
