@@ -28,23 +28,29 @@
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
                             <div class='input-container ic1'>
-                                <input class='input' type='text' placeholder=' ' name='nombre' />
+                                <input class='input' type='text' value=".$filas['nombre']." name='nombre' />
                                 <div class='cut'></div>
                                 <label class='placeholder' for='nombre'>".$filas['nombre']."</label>
                             </div>
-                            <div class='input-container ic2'>
-                                <input class='input' type='text' placeholder=' ' name='icono' />
+                        ";
+                        if ($filas['icono']==NULL) {
+                            echo "
+                                <div class='input-container ic2'>
+                                    <input class='input' type='text' value=".$filas['icono']." name='icono' />
                                 <div class='cut'></div>
-                                <label for='icono' class='placeholder'>".$filas['icono']."</label>
-                            </div>
+                                    <label for='icono' class='placeholder'>".$filas['icono']."</label>
+                                </div>    
+                            ";
+                        }
+                        echo "
                             <div class='input-container ic2'>
-                                <input class='input' type='text' placeholder=' ' name='enlace' />
+                                <input class='input' type='text' value=".$filas['ruta']." name='enlace' />
                                 <div class='cut cut-short'></div>
                                 <label for='enlace' class='placeholder'>".$filas['ruta']."</label>
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
-                        </form>  
-                    ";
+                        </form>
+                        ";
                     if (isset($_POST['modificar'])) {
                         if (empty($_POST['nombre'] && $_POST['enlace'])) {
                             echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
