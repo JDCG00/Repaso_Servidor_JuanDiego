@@ -36,11 +36,20 @@
                         if ($filas['icono']==NULL) {
                             echo "
                                 <div class='input-container ic2'>
-                                    <input class='input' type='text' value=".$filas['icono']." name='icono' />
-                                <div class='cut'></div>
+                                    <input class='input' type='text' placeholder=' ' name='icono' />
+                                    <div class='cut'></div>
                                     <label for='icono' class='placeholder'>".$filas['icono']."</label>
-                                </div>    
+                                </div>  
                             ";
+                        }else{
+                            echo "
+                                <div class='input-container ic2'>
+                                    <input class='input' type='text' value=".$filas['icono']." name='icono' />
+                                    <div class='cut'></div>
+                                    <label for='icono' class='placeholder'>".$filas['icono']."</label>
+                                </div>
+                            ";
+                            
                         }
                         echo "
                             <div class='input-container ic2'>

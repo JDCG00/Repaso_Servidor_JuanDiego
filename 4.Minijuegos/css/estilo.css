@@ -231,5 +231,12 @@ table{
     border-spacing: 20px;
 }
 .formBorrar{
+    display: flex;
     height: 120px;
+}
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
