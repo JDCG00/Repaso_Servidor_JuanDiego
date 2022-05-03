@@ -58,6 +58,7 @@
                                 <label for='enlace' class='placeholder'>".$filas['ruta']."</label>
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
+                            <a class=submit href='../controller/controlador.php?accion=listar'>Cancelar</a>
                         </form>
                         ";
                     if (isset($_POST['modificar'])) {
