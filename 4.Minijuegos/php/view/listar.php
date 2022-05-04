@@ -35,9 +35,9 @@
                         echo "<div class=error>No existen valores.</div>";
                     }
                 ?>
-                <input class="submit" type="submit" name="borrar" value="Borrar">
-                <input class="submit" type="submit" name="modificar" value="Modificar">
+                <input class="submit" type="submit" name="listar" value="Listar">
             </form>
+            
         </div>        
     </div>    
 </body>

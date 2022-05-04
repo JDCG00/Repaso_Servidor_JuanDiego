@@ -23,6 +23,16 @@
         function listar(){            
             $this -> modelo-> consultar();
             $this->filas = $this -> modelo -> filas;
+            if (isset($_POST['listar'])) {
+                header("Location:controlador.php?accion=listarMinijuego&id=".$_POST['minijuego']."");             
+            }
+        }
+        function listarMinijuegoVista(){
+            require_once('../view/listar_minijuego.php');
+        }
+        function listarMinijuego(){
+            $this -> modelo -> delete_update_Listar();
+            $this -> filasListar = $this -> modelo -> filasBorrarMod;
         }
         function borrarVista(){
             require_once('../view/borrar.php');
@@ -57,6 +67,12 @@
                 break;
             case 'listar':
                 $controlador -> listarVista();
+                break;
+            case 'listar':
+                $controlador -> listar();
+                break;
+            case 'listarMinijuego':
+                $controlador -> listarMinijuegoVista();
                 break;
             case 'borrar':
                 $controlador -> borrarVista();

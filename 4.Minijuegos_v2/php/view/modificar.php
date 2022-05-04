@@ -28,7 +28,7 @@
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
                             <div class='input-container ic1'>
-                                <input class='input' type='text' value=".$filas['nombre']." name='nombre' />
+                                <input class='input' type='text' value='".$filas['nombre']."' name='nombre' />
                                 <div class='cut'></div>
                                 <label class='placeholder' for='nombre'>".$filas['nombre']."</label>
                             </div>
@@ -53,7 +53,7 @@
                         }
                         echo "
                             <div class='input-container ic2'>
-                                <input class='input' type='text' value=".$filas['ruta']." name='enlace' />
+                                <input class='input' type='text' value='".$filas['ruta']."' name='enlace' />
                                 <div class='cut cut-short'></div>
                                 <label for='enlace' class='placeholder'>".$filas['ruta']."</label>
                             </div>
