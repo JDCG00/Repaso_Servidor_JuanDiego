@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    scroll-behavior: smooth;
+}
+
+
+nav{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #4158D0;
+    background-image: linear-gradient(180deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-attachment: fixed;
+    height: 80px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    width: 500px;
+    justify-content: space-between;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+ol, ul {
+    padding-left: 2rem;
+}
+
+.nav-boton .nav-link {
+    border: 0;
+    border-radius: 2rem;
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    color: #c3d5e2;
+    text-decoration: none;
+    transition: color 0.6s ease-in-out,background-color 0.6s ease-in-out, text-shadow 0.6s ease-in-out;
+}
+.nav-boton .nav-link.activado, .nav-boton  > .nav-link {
+    color: #fff;
+    background-color: #827cda;
+    transition: color 0.6s ease-in-out,background-color 0.6s ease-in-out,box-shadow 0.6s ease-in-out, filter 0.6s ease-in-out;
+}
+.nav-boton .nav-link.activado:hover,.nav-link.activado:focus , .nav-boton  > .nav-link {
+    filter: saturate(3);
+    color: rgb(227, 221, 255);
+    box-shadow: 0px 0px 10px 0px #8062c9;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.nav-link:focus,.nav-link:hover{
+    background-color: #310581;
+    color: white;
+    text-shadow: 1px 1px 1px black;  
+}
+
+/*Estilo de internet para el formulario*/
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    justify-content: center;
+    height: 100vh;
+}
+  
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 620px;
+    padding: 20px;
+    width: 320px;
+}
+
+.title {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.subtitle {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+}
+
+.ic1 {
+    margin-top: 40px;
+}
+
+.ic2 {
+    margin-top: 30px;
+}
+
+.input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+}
+
+.cut {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 110px;
+}
+
+.cut-short {
+    width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+    transform: translateY(8px);
+}
+
+.placeholder {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+    color: #808097;
+}
+
+.input:focus ~ .placeholder {
+    color: #dc2f55;
+}
+
+.submit {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    /* outline: 0; */
+    text-align: center;
+    width: 100%;
+}
+
+.submit:active {
+    background-color: #06b;
+}
+
+/*-----------*/
+.error {
+    color: rgb(253, 0, 0);
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.correcto {
+    color: rgb(0, 253, 84);
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    background-color: #15172b;
+    color: #eee;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 750px;
+}
+img{
+    width: 20px;
+}
+table{
+    border-spacing: 20px;
+}
+.formBorrar{
+    display: flex;
+    height: 120px;
+}
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
