@@ -23,10 +23,10 @@
         function listar(){            
             $this -> modelo-> consultar();
             $this->filas = $this -> modelo -> filas;
-            if ($_POST['borrar']) {
+            if (isset($_POST['borrar'])) {
                 header("Location:controlador.php?accion=borrar&id=".$_POST['minijuego']."");
             }
-            if ($_POST['modificar']) {
+            if (isset($_POST['modificar'])) {
                 header("Location:controlador.php?accion=modificar&id=".$_POST['minijuego']."");
             }
         }

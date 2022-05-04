@@ -28,9 +28,9 @@
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
                             <div class='input-container ic1'>
-                                <input class='input' type='text' value=".$filas['nombre']." name='nombre' />
+                                <input class='input' type='text' value='".$filas['nombre']."' name='nombre' />
                                 <div class='cut'></div>
-                                <label class='placeholder' for='nombre'>".$filas['nombre']."</label>
+                                <label class='placeholder' for='nombre'>Nombre</label>
                             </div>
                         ";
                         if ($filas['icono']==NULL) {
@@ -38,24 +38,24 @@
                                 <div class='input-container ic2'>
                                     <input class='input' type='text' placeholder=' ' name='icono' />
                                     <div class='cut'></div>
-                                    <label for='icono' class='placeholder'>".$filas['icono']."</label>
+                                    <label for='icono' class='placeholder'>Icono</label>
                                 </div>  
                             ";
                         }else{
                             echo "
                                 <div class='input-container ic2'>
-                                    <input class='input' type='text' value=".$filas['icono']." name='icono' />
+                                    <input class='input' type='text' value='".$filas['icono']."' name='icono' />
                                     <div class='cut'></div>
-                                    <label for='icono' class='placeholder'>".$filas['icono']."</label>
+                                    <label for='icono' class='placeholder'>Icono</label>
                                 </div>
                             ";
                             
                         }
                         echo "
                             <div class='input-container ic2'>
-                                <input class='input' type='text' value=".$filas['ruta']." name='enlace' />
+                                <input class='input' type='text' value='".$filas['ruta']."' name='enlace' />
                                 <div class='cut cut-short'></div>
-                                <label for='enlace' class='placeholder'>".$filas['ruta']."</label>
+                                <label for='enlace' class='placeholder'>Enlace</label>
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
                             <a class=submit href='../controller/controlador.php?accion=listar'>Cancelar</a>

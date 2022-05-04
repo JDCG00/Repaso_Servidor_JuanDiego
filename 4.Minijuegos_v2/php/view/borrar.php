@@ -44,6 +44,8 @@
                         }else{
                             echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                         }                        
+                    }else{
+                        header("Location:../view/error.html");
                     }
                 ?>
             </table>                     

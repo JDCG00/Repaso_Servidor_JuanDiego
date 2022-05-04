@@ -24,27 +24,27 @@
                     <th>Ruta</th>
                 </tr>
             <?php
-                require_once('../controller/controlador.php');
-                $controlador = new Controlador;
-                $controlador->listarMinijuego();
-                $filas = $controlador->filasListar;
-                if (isset($filas)) {
+                if (isset($_GET['id'])) {                    
+                    require_once('../controller/controlador.php');
+                    $controlador = new Controlador;
+                    $controlador->listarMinijuego();
+                    $filas = $controlador->filasListar;
                     if (isset($filas)) {
                         echo "
                             <tr>
                                 <td>".$filas['nombre']."</td>
                                 <td>".$filas['icono']."</td>
                                 <td>".$filas['ruta']."</td>
+                                <td><a href=../controller/controlador.php?accion=borrar&id=".$_GET['id']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
+                                <td><a href=../controller/controlador.php?accion=modificar&id=".$_GET['id']."><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
                             </tr>
-                            <form class=formBorrar action=# method=post>
-                                <a class=submit href='../controller/controlador.php?accion=listar'>Volver</a>
-                            </form>   
+                            <a class=submit href='../controller/controlador.php?accion=listar'>Volver</a>
                         ";
                     }else{
                         echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
-                    }   
+                    }
                 }else{
-                    echo "<div class=error>No existen valores.</div>";
+                    header("Location:../view/error.html");
                 }
             ?>
             </table>
