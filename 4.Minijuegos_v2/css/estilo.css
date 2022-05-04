@@ -78,10 +78,13 @@ ol, ul {
 }
   
 form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 520px;
+    height: 620px;
     padding: 20px;
     width: 320px;
 }
@@ -231,5 +234,12 @@ table{
     border-spacing: 20px;
 }
 .formBorrar{
+    display: flex;
     height: 120px;
+}
+a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
