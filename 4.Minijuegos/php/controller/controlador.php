@@ -34,6 +34,33 @@
             $this -> modelo -> delete_update_Listar();
             $this -> filasListar = $this -> modelo -> filasBorrarMod;
         }
+        function listarCheckVista(){
+            require_once('../view/listar_check.php');
+        }
+        function listarCheck(){            
+            $this -> modelo-> consultar();
+            $this->filas = $this -> modelo -> filas;
+            if (isset($_POST['listar'])) {
+                if (isset($_POST['checkMinijuego'])) {
+                    print_r($_POST['checkMinijuego']);
+                    echo "<br>";
+                    $id = null;
+                    foreach ($_POST['checkMinijuego'] as $valor) {
+                        echo $valor.'<br>';
+                        $id .= $valor.', ';
+                    }
+                    $id = rtrim($id, ', ');
+                    //header("Location:controlador.php?accion=listarCheckMinijuegos&id=$id");
+                }              
+            }
+        }
+        function listarCheckMinijuegosVista(){
+            require_once('../view/listar_check_minijuegos.php');
+        }
+        function listarCheckMinijuegos(){
+            $this -> modelo -> listarMinijuegosCheck();
+        }
+
         function borrarVista(){
             require_once('../view/borrar.php');
         }
@@ -68,11 +95,14 @@
             case 'listar':
                 $controlador -> listarVista();
                 break;
-            case 'listar':
-                $controlador -> listar();
-                break;
             case 'listarMinijuego':
                 $controlador -> listarMinijuegoVista();
+                break;
+            case 'listarCheck':
+                $controlador -> listarCheckVista();
+                break;
+            case 'listarCheckMinijuegos':
+                $controlador -> listarCheckMinijuegosVista();
                 break;
             case 'borrar':
                 $controlador -> borrarVista();
