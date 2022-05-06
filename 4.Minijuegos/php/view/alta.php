@@ -13,6 +13,7 @@
             <li><a href="../../index.html" class="nav-link">Inicio</a></li>
             <li><a href="#" class="nav-link activado">Alta de Minijuegos</a></li>
             <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listarCheck" class="nav-link">Listar Minijuegos con Check</a></li>
         </ul>
     </nav>
     <div class="contenedor">

@@ -12,7 +12,8 @@
         <ul class="nav nav-boton">    
             <li><a href="../../index.html" class="nav-link">Inicio</a></li>
             <li><a href="../controller/controlador.php?accion=alta" class="nav-link">Alta de Minijuegos</a></li>
-            <li><a href="#" class="nav-link activado">Listado de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
+            <li><a href="#" class="nav-link activado">Listar Minijuegos con Check</a></li>
         </ul>
     </nav>
     <div class="contenedor">
@@ -34,6 +35,11 @@
                                     </li>
                             ";
                         }
+                        if (isset($_POST['listar'])) {
+                            if (!isset($_POST['checkMinijuego'])){
+                                echo "<div class=error>Debe seleccionar al menos un valor.</div>";
+                            }
+                        }
                     }else{
                         echo "<div class=error>No existen valores.</div>";
                     }
@@ -41,7 +47,6 @@
                 </ul>
                 <input class="submit" type="submit" name="listar" value="Listar">
             </form>
-            
         </div>        
     </div>    
 </body>

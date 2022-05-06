@@ -36,15 +36,15 @@
             }
         }
         function listarMinijuegosCheck(){
-            $consulta = "SELECT * from  WHERE idMinijuegos IN(".$_GET['id'].");";
+            $consulta = "SELECT * from minijuegos WHERE idMinijuego IN(".$_GET['id'].");";
 
-            echo $consulta;
+            
             $resultado = $this -> conex -> query($consulta);
+            
             while($fila = $resultado->fetch_array())
             {
                 $this -> filas[] = $fila;
             }
-
         }
         function delete_update_Listar(){
             $consulta1 = "SELECT * FROM minijuegos WHERE idMinijuego=".$_GET['id'].";";

@@ -42,15 +42,12 @@
             $this->filas = $this -> modelo -> filas;
             if (isset($_POST['listar'])) {
                 if (isset($_POST['checkMinijuego'])) {
-                    print_r($_POST['checkMinijuego']);
-                    echo "<br>";
                     $id = null;
                     foreach ($_POST['checkMinijuego'] as $valor) {
-                        echo $valor.'<br>';
                         $id .= $valor.', ';
                     }
                     $id = rtrim($id, ', ');
-                    //header("Location:controlador.php?accion=listarCheckMinijuegos&id=$id");
+                    header("Location:controlador.php?accion=listarCheckMinijuegos&id=$id");
                 }              
             }
         }
@@ -59,6 +56,7 @@
         }
         function listarCheckMinijuegos(){
             $this -> modelo -> listarMinijuegosCheck();
+            $this -> filasListarCheck = $this -> modelo -> filas;
         }
 
         function borrarVista(){

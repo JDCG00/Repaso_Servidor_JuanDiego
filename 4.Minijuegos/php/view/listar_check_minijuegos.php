@@ -12,7 +12,8 @@
         <ul class="nav nav-boton">    
             <li><a href="../../index.html" class="nav-link">Inicio</a></li>
             <li><a href="../controller/controlador.php?accion=alta" class="nav-link">Alta de Minijuegos</a></li>
-            <li><a href="#" class="nav-link activado">Listado de Minijuegos</a></li>
+            <li><a href="../controller/controlador.php?accion=listar" class="nav-link">Listado de Minijuegos</a></li>
+            <li><a href="#" class="nav-link activado">Listar Minijuegos con Check</a></li>
         </ul>
     </nav>
     <div class="contenedor">
@@ -28,16 +29,20 @@
                     require_once('../controller/controlador.php');
                     $controlador = new Controlador;
                     $controlador->listarCheckMinijuegos();
-                    $filas = $controlador->filasListar;
+                    $filas = $controlador->filasListarCheck;
                     if (isset($filas)) {
-                        echo "
-                            <tr>
-                                <td>".$filas['nombre']."</td>
-                                <td>".$filas['icono']."</td>
-                                <td>".$filas['ruta']."</td>
-                            </tr>
-                            <a class=submit href='../controller/controlador.php?accion=listar'>Volver</a>
-                        ";
+                        foreach ($filas as $valor) {
+                            echo "
+                                    <tr>
+                                        <td>".$valor['nombre']."</td>
+                                        <td>".$valor['icono']."</td>
+                                        <td>".$valor['ruta']."</td>
+                                        <td><a href=../controller/controlador.php?accion=borrar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
+                                        <td><a href=../controller/controlador.php?accion=modificar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
+                                    </tr>
+                            ";
+                        }
+                        echo "<a class=submit href='../controller/controlador.php?accion=listarCheck'>Volver</a>";
                     }else{
                         echo "<div class=error>No existe valores.</div>";
                     }
