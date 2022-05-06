@@ -27,13 +27,36 @@
                     $controlador->listarCheck();
                     $filas = $controlador->filas;
                     if (isset($filas)) {
-                        foreach ($filas as $valor) {
-                            echo "
-                                    <li class='li_checkbox'>
-                                        <input name='checkMinijuego[]' value=".$valor['idMinijuego']." id='s1' type='checkbox' class='switch'>
-                                        <label for='checkMinijuego[]'>".$valor['nombre']."</label>
-                                    </li>
-                            ";
+                        echo "<input class='button' name='seleccionarTodo' value='Seleccionar todo' type='submit'>";
+                        if (isset($_POST['seleccionarTodo'])) {
+                            foreach ($filas as $valor) {
+                                echo "
+                                        <li class='li_checkbox'>
+                                            <input name='checkMinijuego[]' value=".$valor['idMinijuego']." id='s1' type='checkbox' class='switch' checked>
+                                            <label for='checkMinijuego[]'>".$valor['nombre']."</label>
+                                        </li>
+                                ";
+                            }
+                            echo "<input class='button' name='quitarTodo' value='Quitar todo' type='submit'>";
+                            if (isset($_POST['quitarTodo'])) {
+                                foreach ($filas as $valor) {
+                                    echo "
+                                            <li class='li_checkbox'>
+                                                <input name='checkMinijuego[]' value=".$valor['idMinijuego']." id='s1' type='checkbox' class='switch'>
+                                                <label for='checkMinijuego[]'>".$valor['nombre']."</label>
+                                            </li>
+                                    ";
+                                }
+                            }
+                        }else{
+                            foreach ($filas as $valor) {
+                                echo "
+                                        <li class='li_checkbox'>
+                                            <input name='checkMinijuego[]' value=".$valor['idMinijuego']." id='s1' type='checkbox' class='switch'>
+                                            <label for='checkMinijuego[]'>".$valor['nombre']."</label>
+                                        </li>
+                                ";
+                            }
                         }
                         if (isset($_POST['listar'])) {
                             if (!isset($_POST['checkMinijuego'])){
