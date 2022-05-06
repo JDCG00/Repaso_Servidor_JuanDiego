@@ -24,7 +24,9 @@
             $this -> modelo-> consultar();
             $this->filas = $this -> modelo -> filas;
             if (isset($_POST['listar'])) {
-                header("Location:controlador.php?accion=listarMinijuego&id=".$_POST['minijuego']."");             
+                if (isset($_POST['minijuego'])) {
+                    header("Location:controlador.php?accion=listarMinijuego&id=".$_POST['minijuego']."");  
+                }
             }
         }
         function listarMinijuegoVista(){
