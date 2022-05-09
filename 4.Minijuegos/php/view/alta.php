@@ -17,7 +17,7 @@
         </ul>
     </nav>
     <div class="contenedor">
-        <form action="#" method="post">
+        <form action="#" method="post" enctype="multipart/form-data">
             <div class="title">Alta de Minijuegos</div>
             <div class="subtitle">Introduzca datos</div>
             <div class="input-container ic1">
@@ -26,7 +26,7 @@
                 <label class="placeholder" for="nombre">Nombre Minijuego</label>
             </div>
             <div class="input-container ic2">
-                <input class="input" type="text" placeholder=" " name="icono" />
+                <input class="input" type="file" name="icono" />
                 <div class="cut"></div>
                 <label for="icono" class="placeholder">Icono</label>
             </div>

@@ -12,13 +12,16 @@
         }        
 
         function insertar(){
-            if (empty($_POST['icono'])) {
+            $fichero_nombre = $_FILES['icono']['name'];
+
+            if (empty($fichero_nombre)) {
                 $icono = 'NULL';
             }else {
-                $icono = "'".$_POST['icono']."'";
+                $icono = "'$fichero_nombre'";
             } 
 
             $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
+            
             try {
                 $this->conex -> query($consulta);
             } catch (mysqli_sql_exception $e) {
