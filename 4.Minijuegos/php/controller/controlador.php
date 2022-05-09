@@ -23,13 +23,13 @@
                 $permitido = array("image/png", "image/jpeg", "image/gif");
                 
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
-                    $this ->modelo -> insertar();
-                }
-                if (in_array($fichero_tipo, $permitido)) {
-                    if (move_uploaded_file($fichero_tmp, $fichero_subido)) {
-                        echo "a";
+                    if (in_array($fichero_tipo, $permitido)) {
+                        if (move_uploaded_file($fichero_tmp, $fichero_subido)) {
+                            echo "a";
+                        }
                     }
-                }
+                    $this ->modelo -> insertar();
+                }                
             }
         }
         function listarVista(){
