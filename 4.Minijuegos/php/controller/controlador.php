@@ -10,16 +10,18 @@
         }
         
         function alta(){
-            $ruta = '../../ficheros/';
-            $fichero = $_FILES['icono'];
-            $fichero_nombre = $fichero['name'];
-            $fichero_tmp = $fichero['tmp_name'];
-            $fichero_tipo = $fichero['type'];
-
-            $fichero_subido = $ruta . basename($fichero_nombre);
-            $permitido = array("image/png", "image/jpeg", "image/gif");
             require('../view/alta.php');
-            if (isset($_POST['enviar'])) {                
+            if (isset($_POST['enviar'])) {
+                $ruta = '../../ficheros/';
+            
+                $fichero = $_FILES['icono'];
+                $fichero_nombre = $fichero['name'];
+                $fichero_tmp = $fichero['tmp_name'];
+                $fichero_tipo = $fichero['type'];
+
+                $fichero_subido = $ruta . basename($fichero_nombre);
+                $permitido = array("image/png", "image/jpeg", "image/gif");
+                
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
                     $this ->modelo -> insertar();
                 }

@@ -26,8 +26,11 @@
                 <label class="placeholder" for="nombre">Nombre Minijuego</label>
             </div>
             <div class="input-container ic2">
-                <input class="input" type="file" name="icono" />
-                <div class="cut"></div>
+                <label class="file">
+                    <input type="file" id="file" name="icono">
+                <span class="file-custom"></span>
+                </label>
+                <div class="cut"></div>                
                 <label for="icono" class="placeholder">Icono</label>
             </div>
             <div class="input-container ic2">
