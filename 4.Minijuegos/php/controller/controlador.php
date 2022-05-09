@@ -8,27 +8,30 @@
             $this->modelo = new Modelo;
 
         }
-        
+        function altaVista(){
+            require_once('../view/alta.php');
+        }
         function alta(){
-            require('../view/alta.php');
             if (isset($_POST['enviar'])) {
-                $ruta = '../../ficheros/';
-            
+                $ruta = '../../ficheros/';            
                 $fichero = $_FILES['icono'];
-                $fichero_nombre = $fichero['name'];
-                $fichero_tmp = $fichero['tmp_name'];
-                $fichero_tipo = $fichero['type'];
 
-                $fichero_subido = $ruta . basename($fichero_nombre);
-                $permitido = array("image/png", "image/jpeg", "image/gif");
+                $this->fichero_nombre = $fichero['name'];
+                $this->fichero_tmp = $fichero['tmp_name'];
+                $this -> fichero_tipo = $fichero['type'];
+
+                $this->fichero_subido = $ruta . basename($this->fichero_nombre);
+                $this->permitido = array("image/png", "image/jpeg", "image/gif");
                 
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
-                    if (in_array($fichero_tipo, $permitido)) {
-                        if (move_uploaded_file($fichero_tmp, $fichero_subido)) {
-                            echo "a";
-                        }
+                    if (in_array($this->fichero_tipo, $this->permitido)) {
+                        if (strlen($this->fichero_nombre) <= 40) {
+                            move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                        }              
+                        $this ->modelo -> insertar();
+                    }elseif (empty($this->fichero_nombre)) {
+                        $this ->modelo -> insertar();
                     }
-                    $this ->modelo -> insertar();
                 }                
             }
         }
@@ -105,7 +108,7 @@
     if (isset($_GET['accion'])) {
         switch ($_GET['accion']) {
             case 'alta':
-                $controlador->alta();
+                $controlador->altaVista();
                 break;
             case 'listar':
                 $controlador -> listarVista();
