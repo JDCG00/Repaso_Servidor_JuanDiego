@@ -11,16 +11,8 @@
             $this->conex = new mysqli(servidor, usuario, pw, bd);
         }        
 
-        function insertar(){
-            $fichero_nombre = $_FILES['icono']['name'];
-
-            if (empty($fichero_nombre)) {
-                $icono = 'NULL';
-            }else {
-                $icono = "'$fichero_nombre'";
-            } 
-
-            $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
+        function insertar($nombre, $icono, $enlace){            
+            $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES($nombre, $icono, $enlace);";
             
 
             try {
@@ -39,9 +31,8 @@
                 $this -> filas[] = $fila;
             }
         }
-        function listarMinijuegosCheck(){
-            $consulta = "SELECT * from minijuegos WHERE idMinijuego IN(".$_GET['id'].");";
-
+        function listarMinijuegosCheck($id){
+            $consulta = "SELECT * from minijuegos WHERE idMinijuego IN($id);";
             
             $resultado = $this -> conex -> query($consulta);
             
@@ -50,26 +41,21 @@
                 $this -> filas[] = $fila;
             }
         }
-        function delete_update_Listar(){
-            $consulta1 = "SELECT * FROM minijuegos WHERE idMinijuego=".$_GET['id'].";";
+        function delete_update_Listar($id){
+            $consulta1 = "SELECT * FROM minijuegos WHERE idMinijuego=$id;";
             
             $resultado = $this -> conex ->query($consulta1);
 
             $this -> filasBorrarMod = $resultado -> fetch_array();
         }
-        function delete(){
-            $consulta2 = "DELETE FROM minijuegos WHERE idMinijuego = ".$_GET['id'].";";
+        function delete($id){
+            $consulta2 = "DELETE FROM minijuegos WHERE idMinijuego = $id;";
             $this -> conex ->query($consulta2);
 
         }
-        function update(){
-            if (empty($_POST['icono'])) {
-                $icono = 'NULL';
-            }else {
-                $icono = "'".$_POST['icono']."'";
-            }
+        function update($icono, $nombre, $enlace, $id){
 
-            $consulta = "UPDATE minijuegos SET nombre = '".$_POST['nombre']."', icono = $icono, ruta = '".$_POST['enlace']."' WHERE minijuegos.idMinijuego = ".$_GET['id'].";";
+            $consulta = "UPDATE minijuegos SET nombre = $nombre, icono = $icono, ruta = $enlace WHERE minijuegos.idMinijuego = $id;";
             try {
                 $this->conex -> query($consulta);
             } catch (mysqli_sql_exception $e) {

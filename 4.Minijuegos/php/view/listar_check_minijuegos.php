@@ -25,7 +25,7 @@
                     <th>Ruta</th>
                 </tr>
             <?php
-                if (isset($_GET['id'])) {                    
+                if (!empty($_GET['id'])) {                    
                     require_once('../controller/controlador.php');
                     $controlador = new Controlador;
                     $controlador->listarCheckMinijuegos();
@@ -44,7 +44,7 @@
                         }
                         echo "<a class=submit href='../controller/controlador.php?accion=listarCheck'>Volver</a>";
                     }else{
-                        echo "<div class=error>No existe valores.</div>";
+                        echo "<div class=error>No existen valores.</div>";
                     }
                 }else{
                     header("Location:../view/error.html");

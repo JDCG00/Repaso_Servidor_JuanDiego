@@ -24,13 +24,17 @@
                 $this->permitido = array("image/png", "image/jpeg", "image/gif");
                 
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
+                    $nombre = "'".$_POST['nombre']."'";
+                    $enlace = "'".$_POST['enlace']."'";
                     if (in_array($this->fichero_tipo, $this->permitido)) {
                         if (strlen($this->fichero_nombre) <= 40) {
                             move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
-                        }              
-                        $this ->modelo -> insertar();
+                        }
+                        $icono = "'$this->fichero_nombre'";
+                        $this ->modelo -> insertar($nombre, $icono, $enlace);
                     }elseif (empty($this->fichero_nombre)) {
-                        $this ->modelo -> insertar();
+                        $icono = 'NULL';
+                        $this ->modelo -> insertar($nombre, $icono, $enlace);
                     }
                 }                
             }
@@ -51,8 +55,11 @@
             require_once('../view/listar_minijuego.php');
         }
         function listarMinijuego(){
-            $this -> modelo -> delete_update_Listar();
-            $this -> filasListar = $this -> modelo -> filasBorrarMod;
+            $id = $_GET['id'];
+            if (!empty($id)) {
+                $this -> modelo -> delete_update_Listar($id);
+                $this -> filasListar = $this -> modelo -> filasBorrarMod;
+            }
         }
         function listarCheckVista(){
             require_once('../view/listar_check.php');
@@ -64,9 +71,9 @@
                 if (isset($_POST['checkMinijuego'])) {
                     $id = null;
                     foreach ($_POST['checkMinijuego'] as $valor) {
-                        $id .= $valor.', ';
+                        $id .= $valor.',';
                     }
-                    $id = rtrim($id, ', ');
+                    $id = rtrim($id, ',');
                     header("Location:controlador.php?accion=listarCheckMinijuegos&id=$id");
                 }              
             }
@@ -75,32 +82,48 @@
             require_once('../view/listar_check_minijuegos.php');
         }
         function listarCheckMinijuegos(){
-            $this -> modelo -> listarMinijuegosCheck();
-            $this -> filasListarCheck = $this -> modelo -> filas;
+            $id = $_GET['id'];
+            if (!empty($id)) {
+                $this -> modelo -> listarMinijuegosCheck($id);
+                $this -> filasListarCheck = $this -> modelo -> filas;
+            }
         }
 
         function borrarVista(){
             require_once('../view/borrar.php');
         }
         function borrar(){
-            $this -> modelo -> delete_update_Listar();
-            $this -> filasBorrar = $this -> modelo ->filasBorrarMod;
-            if (isset($_POST['borrar'])) {
-                $this->modelo->delete();
-                header("Location:controlador.php?accion=listar");             
+            $id = $_GET['id'];
+            if (!empty($id)) {
+                $this -> modelo -> delete_update_Listar($id);
+                $this -> filasBorrar = $this -> modelo ->filasBorrarMod;
+                if (isset($_POST['borrar'])) {
+                    $this->modelo->delete($id);
+                    header("Location:controlador.php?accion=listar");             
+                }
             }
         }
         function modificarVista(){
             require_once('../view/modificar.php');
         }
         function modificar(){
-            $this -> modelo -> delete_update_Listar();
-            $this -> filasModificar = $this -> modelo ->filasBorrarMod;
-            if (isset($_POST['modificar'])) {
-                if(!empty($_POST['nombre'] && $_POST['enlace'])) {
-                    $this->modelo->update();
-                }            
-            }            
+            $id = $_GET['id'];
+            if (!empty($id)) {
+                $this -> modelo -> delete_update_Listar($id);
+                $this -> filasModificar = $this -> modelo ->filasBorrarMod;
+                if (isset($_POST['modificar'])) {
+                    if(!empty($_POST['nombre'] && $_POST['enlace'])) {
+                        $nombre = "'".$_POST['nombre']."'";
+                        $enlace = "'".$_POST['enlace']."'";
+                        if (empty($_POST['icono'])) {
+                            $icono = 'NULL';
+                        }else {
+                            $icono = "'".$_POST['icono']."'";
+                        }
+                        $this->modelo->update($icono, $nombre, $enlace, $id);
+                    }            
+                }
+            }
         }
     }
 

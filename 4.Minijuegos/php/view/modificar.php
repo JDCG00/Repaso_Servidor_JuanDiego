@@ -18,7 +18,7 @@
     </nav>
     <div class="contenedor">
         <?php
-            if (isset($_GET['id'])) {
+            if (!empty($_GET['id'])) {
                 require_once('../controller/controlador.php');
                 $controlador = new Controlador;
                 $controlador->modificar();
