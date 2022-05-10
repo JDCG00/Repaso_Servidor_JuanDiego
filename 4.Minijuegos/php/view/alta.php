@@ -26,12 +26,13 @@
                 <label class="placeholder" for="nombre">Nombre Minijuego</label>
             </div>
             <div class="input-container ic2">
-                <label class="file">
-                    <input type="file" id="file" name="icono">
-                <span class="file-custom"></span>
-                </label>
-                <div class="cut"></div>                
-                <label for="icono" class="placeholder">Icono</label>
+                <div class="file-upload">
+                    <div class="file-upload-select">
+                        <div class="file-select-button" >Elegir archivo</div>
+                    <div class="file-select-name">No hay archivo...</div> 
+                    <input type="file" name="icono" id="file-upload-input">
+                    </div>
+                </div>
             </div>
             <div class="input-container ic2">
                 <input class="input" type="text" placeholder=" " name="enlace" />
@@ -42,13 +43,40 @@
         </form>
         <?php
             if (isset($_POST['enviar'])) {
-                if (empty($_POST['nombre'] && $_POST['enlace'])) {
-                    echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
+                require_once('../controller/controlador.php');
+                $controlador = new Controlador;
+                $controlador -> alta();
+
+                if(!empty($_POST['nombre'] && $_POST['enlace'])) {
+                    if (in_array($controlador->fichero_tipo, $controlador->permitido)) {
+                        if (strlen($controlador->fichero_nombre) <= 40) {
+                            echo "<div class=correcto>Datos introducidos correctamente.</div>"; 
+                        }else{
+                            echo "<div class=error>El nombre del fichero debe tener como máximo 40 caracteres.</div>";
+                        }                                      
+                    }elseif (!empty($this->fichero_nombre)) {
+                        echo "<div class=error>El archivo debe ser una imagen.</div>";
+                    }else{
+                        echo "<div class=correcto>Datos introducidos correctamente.</div>"; 
+                    }
                 }else{
-                    echo "<div class=correcto>Datos introducidos correctamente.</div>";   
+                    echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
                 }
             }
         ?>
-    </div>    
+    </div> 
+    <script>
+        let fileInput = document.getElementById("file-upload-input");
+        let fileSelect = document.getElementsByClassName("file-upload-select")[0];
+        fileSelect.onclick = function() {
+            fileInput.click();
+        }
+        fileInput.onchange = function() {
+            let filename = fileInput.files[0].name;
+            let selectName = document.getElementsByClassName("file-select-name")[0];
+            console.log(document.getElementsByClassName("file-select-name"));
+            selectName.innerText = filename;
+        }
+    </script>
 </body>
 </html>

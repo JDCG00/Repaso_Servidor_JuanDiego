@@ -22,6 +22,7 @@
 
             $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES('".$_POST['nombre']."', $icono, '".$_POST['enlace']."');";
             
+
             try {
                 $this->conex -> query($consulta);
             } catch (mysqli_sql_exception $e) {
