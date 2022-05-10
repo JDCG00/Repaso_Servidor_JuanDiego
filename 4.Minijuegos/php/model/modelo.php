@@ -14,13 +14,12 @@
         function insertar($nombre, $icono, $enlace){            
             $consulta = "INSERT INTO minijuegos(nombre, icono, ruta) VALUES($nombre, $icono, $enlace);";
             
-
             try {
                 $this->conex -> query($consulta);
             } catch (mysqli_sql_exception $e) {
                 echo $e->getMessage();
             }
-                     
+            
         }
         function consultar(){
             $consulta = "SELECT * FROM minijuegos;";
@@ -35,6 +34,7 @@
             $consulta = "SELECT * from minijuegos WHERE idMinijuego IN($id);";
             
             $resultado = $this -> conex -> query($consulta);
+            
             
             while($fila = $resultado->fetch_array())
             {

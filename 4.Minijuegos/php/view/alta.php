@@ -54,7 +54,7 @@
                         }else{
                             echo "<div class=error>El nombre del fichero debe tener como máximo 40 caracteres.</div>";
                         }                                      
-                    }elseif (!empty($this->fichero_nombre)) {
+                    }elseif (!empty($controlador->fichero_nombre)) {
                         echo "<div class=error>El archivo debe ser una imagen.</div>";
                     }else{
                         echo "<div class=correcto>Datos introducidos correctamente.</div>"; 

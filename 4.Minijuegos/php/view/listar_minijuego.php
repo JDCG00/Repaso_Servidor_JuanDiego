@@ -34,13 +34,23 @@
                         echo "
                             <tr>
                                 <td>".$filas['nombre']."</td>
-                                <td>".$filas['icono']."</td>
+                            ";
+                            if ($filas['icono'] == NULL) {
+                                echo "
+                                    <td>".$filas['icono']."</td>
+                                ";
+                            }else{
+                                echo "
+                                    <td><img src=../../ficheros/".$filas['icono']."></td>
+                                ";
+                            }
+                            echo "    
                                 <td>".$filas['ruta']."</td>
                                 <td><a href=../controller/controlador.php?accion=borrar&id=".$_GET['id']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
                                 <td><a href=../controller/controlador.php?accion=modificar&id=".$_GET['id']."><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
-                            </tr>
-                            <a class=submit href='../controller/controlador.php?accion=listar'>Volver</a>
-                        ";
+                                </tr>
+                                <a class=submit href='../controller/controlador.php?accion=listar'>Volver</a>
+                            ";
                     }else{
                         echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                     }

@@ -35,12 +35,20 @@
                             echo "
                                     <tr>
                                         <td>".$valor['nombre']."</td>
-                                        <td>".$valor['icono']."</td>
+                                    ";
+                                    if ($valor['icono'] == NULL) {
+                                        echo "<td>".$valor['icono']."</td>";
+                                    }else{
+                                        echo "
+                                            <td><img src=../../ficheros/".$valor['icono']."></td>
+                                        ";
+                                    }
+                                    echo "       
                                         <td>".$valor['ruta']."</td>
                                         <td><a href=../controller/controlador.php?accion=borrar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/3096/3096750.png></a></td>
                                         <td><a href=../controller/controlador.php?accion=modificar&id=".$valor['idMinijuego']."><img src=https://cdn-icons-png.flaticon.com/512/588/588436.png></a></td>
                                     </tr>
-                            ";
+                                    ";
                         }
                         echo "<a class=submit href='../controller/controlador.php?accion=listarCheck'>Volver</a>";
                     }else{
