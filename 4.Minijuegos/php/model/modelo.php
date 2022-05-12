@@ -8,7 +8,7 @@
         public $filasBorrar;
 
         function __construct(){
-            $this->conex = new mysqli(servidor, usuario, pw, bd);
+            $this->conex = new mysqli(SERVIDOR, USUARIO, PW, BD);
         }        
 
         function insertar($nombre, $icono, $enlace){            

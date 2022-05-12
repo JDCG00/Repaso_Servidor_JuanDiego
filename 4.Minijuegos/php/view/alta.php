@@ -30,7 +30,7 @@
                     <div class="file-upload-select">
                         <div class="file-select-button" >Elegir archivo</div>
                     <div class="file-select-name">No hay archivo...</div> 
-                    <input type="file" name="icono" id="file-upload-input">
+                        <input type="file" name="icono" id="file-upload-input">
                     </div>
                 </div>
             </div>

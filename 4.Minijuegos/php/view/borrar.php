@@ -34,14 +34,18 @@
                             echo "
                                 <tr>
                                     <td>".$filas['nombre']."</td>
-                                    <td>".$filas['icono']."</td>
+                                ";
+                                echo "
+                                    <td><img src=../../ficheros/".$filas['icono']."></td>
+                                ";
+                                echo "
                                     <td>".$filas['ruta']."</td>
                                 </tr>
-                                <form class=formBorrar action=# method=post>
-                                    <a class=submit href='../controller/controlador.php?accion=listar'>Cancelar</a>
-                                    <input class=submit type=submit value=Borrar minijuego name=borrar>
-                                </form>   
-                            ";
+                                    <form class=formBorrar action=# method=post>
+                                        <a class=submit href='../controller/controlador.php?accion=listar'>Cancelar</a>
+                                        <input class=submit type=submit value=Borrar minijuego name=borrar>
+                                    </form>   
+                                ";
                         }else{
                             echo "<div class=error>No existe el id: ".$_GET['id']."</div>";
                         }                        

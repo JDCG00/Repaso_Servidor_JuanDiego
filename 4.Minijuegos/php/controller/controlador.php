@@ -6,21 +6,20 @@
         function __construct(){
             require_once('../model/modelo.php');
             $this->modelo = new Modelo;
-
+            $this->ruta = '../../ficheros/';         
         }
         function altaVista(){
             require_once('../view/alta.php');
         }
         function alta(){
             if (isset($_POST['enviar'])) {
-                $ruta = '../../ficheros/';            
                 $fichero = $_FILES['icono'];
 
                 $this->fichero_nombre = $fichero['name'];
                 $this->fichero_tmp = $fichero['tmp_name'];
                 $this -> fichero_tipo = $fichero['type'];
 
-                $this->fichero_subido = $ruta . basename($this->fichero_nombre);
+                $this->fichero_subido = $this->ruta . basename($this->fichero_nombre);
                 $this->permitido = array("image/png", "image/jpeg", "image/gif");
                 
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
@@ -97,7 +96,10 @@
             if (!empty($id)) {
                 $this -> modelo -> delete_update_Listar($id);
                 $this -> filasBorrar = $this -> modelo ->filasBorrarMod;
+                $ficheroNombre = $this -> modelo -> filasBorrarMod['icono'];
                 if (isset($_POST['borrar'])) {
+                    $fichero = $this->ruta. $ficheroNombre;
+                    unlink($fichero);
                     $this->modelo->delete($id);
                     header("Location:controlador.php?accion=listar");             
                 }
@@ -113,6 +115,7 @@
                 $this -> filasModificar = $this -> modelo ->filasBorrarMod;
                 if (isset($_POST['modificar'])) {
                     if(!empty($_POST['nombre'] && $_POST['enlace'])) {
+                        
                         $nombre = "'".$_POST['nombre']."'";
                         $enlace = "'".$_POST['enlace']."'";
                         if (empty($_POST['icono'])) {
