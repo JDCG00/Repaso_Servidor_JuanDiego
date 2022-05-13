@@ -39,7 +39,6 @@
                                     <div class='hex-cell'>
                                         <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
                                     </div>
-                                    <input class='submit' type='submit' name='borrar_imagen' value='Borrar Imagen'>
                                     <div class='input-container ic2'>
                                         <div class='file-upload'>
                                             <div class='file-upload-select'>
@@ -57,7 +56,6 @@
                                         <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
                                     </object>
                                 </div>
-                                <input class='submit' type='submit' name='borrar_imagen' value='Borrar Imagen'>
                                 <div class='input-container ic2'>
                                     <div class='file-upload'>
                                         <div class='file-upload-select'>
@@ -76,6 +74,7 @@
                                 <label for='enlace' class='placeholder'>Enlace</label>
                             </div>
                             <input class='submit' type='submit' name='modificar' value='Modificar minijuego'>
+                            <input class='submit' type='submit' name='borrar_imagen' value='Borrar Imagen'>
                             <a class=submit href='../controller/controlador.php?accion=listar'>Cancelar</a>
                         </form>
                         ";

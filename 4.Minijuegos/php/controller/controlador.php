@@ -148,8 +148,8 @@
                             $icono = "'$this->fichero_nombre'";
                             $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }elseif (empty($this->fichero_nombre)) {
-                            if (file_exists($this->fichero_nombre)) {
-                                $icono = "'$this->fichero_nombre'";
+                            if (file_exists($this->fichero_subido)) {
+                                $icono = $ficheroNombre;
                             }else{
                                 $icono = 'NULL';
                             }
