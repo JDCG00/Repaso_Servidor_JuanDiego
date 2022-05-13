@@ -122,8 +122,9 @@
                     if ($ficheroNombre != NULL) {
                         if (isset($_POST['borrar_imagen'])) {
                             if (file_exists($fichero)) {
+                                $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
                                 unlink($fichero);
-                                header('Location: #');
+                                header("Location: http:controlador.php?accion=modificar&id=$idMinijuego");
                             }
                         }
                     }
@@ -156,7 +157,8 @@
                             $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }
                     }
-                    header('Location: #');
+                    $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
+                    header("Location: http:controlador.php?accion=modificar&id=$idMinijuego");
                 }
             }
         }
