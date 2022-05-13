@@ -6,7 +6,7 @@
         function __construct(){
             require_once('../model/modelo.php');
             $this->modelo = new Modelo;
-            $this->ruta = '../../ficheros/';         
+            $this->ruta = '../../ficheros/';        
         }
         function altaVista(){
             require_once('../view/alta.php');
@@ -96,10 +96,13 @@
             if (!empty($id)) {
                 $this -> modelo -> delete_update_Listar($id);
                 $this -> filasBorrar = $this -> modelo ->filasBorrarMod;
-                $ficheroNombre = $this -> modelo -> filasBorrarMod['icono'];
+                    
                 if (isset($_POST['borrar'])) {
-                    $fichero = $this->ruta. $ficheroNombre;
-                    unlink($fichero);
+                    if (isset($this -> modelo -> filasBorrarMod['icono'])) {
+                        $ficheroNombre = $this -> modelo -> filasBorrarMod['icono'];
+                        $fichero = $this->ruta. $ficheroNombre;
+                        unlink($fichero);
+                    }
                     $this->modelo->delete($id);
                     header("Location:controlador.php?accion=listar");             
                 }
@@ -113,18 +116,40 @@
             if (!empty($id)) {
                 $this -> modelo -> delete_update_Listar($id);
                 $this -> filasModificar = $this -> modelo ->filasBorrarMod;
+                if (isset($this -> modelo -> filasBorrarMod['icono'])) {
+                    $ficheroNombre = $this -> modelo -> filasBorrarMod['icono'];
+                    $fichero = $this -> ruta . $ficheroNombre;
+                    if ($ficheroNombre != NULL) {
+                        if (isset($_POST['borrar_imagen'])) {
+                            if (file_exists($fichero)) {
+                                unlink($fichero);
+                                header('Location: #');
+                            }
+                        }
+                    }
+                }
                 if (isset($_POST['modificar'])) {
+                    $fichero = $_FILES['icono'];
+
+                    $this->fichero_nombre = $fichero['name'];
+                    $this->fichero_tmp = $fichero['tmp_name'];
+                    $this -> fichero_tipo = $fichero['type'];
+
+                    $this->fichero_subido = $this->ruta . basename($this->fichero_nombre);
+                    $this->permitido = array("image/png", "image/jpeg", "image/gif");
+                    
                     if(!empty($_POST['nombre'] && $_POST['enlace'])) {
-                        
                         $nombre = "'".$_POST['nombre']."'";
                         $enlace = "'".$_POST['enlace']."'";
-                        if (empty($_POST['icono'])) {
-                            $icono = 'NULL';
-                        }else {
-                            $icono = "'".$_POST['icono']."'";
+                        if (in_array($this->fichero_tipo, $this->permitido)) {
+                            if (strlen($this->fichero_nombre) <= 40) {
+                                move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                            }
+                            $icono = "'$this->fichero_nombre'";
+                            $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }
-                        $this->modelo->update($icono, $nombre, $enlace, $id);
-                    }            
+                    }
+                header('Location: #');
                 }
             }
         }

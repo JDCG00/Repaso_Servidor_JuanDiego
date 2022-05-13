@@ -35,9 +35,17 @@
                                 <tr>
                                     <td>".$filas['nombre']."</td>
                                 ";
-                                echo "
-                                    <td><img src=../../ficheros/".$filas['icono']."></td>
-                                ";
+                                if ($filas['icono'] == NULL) {
+                                    echo "<td>No hay imagen</td>";
+                                }else{
+                                    echo "
+                                        <td>
+                                            <object class='img_modificar' data='../../ficheros/".$filas['icono']."'>
+                                                <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
+                                            </object>
+                                        </td>
+                                    ";
+                                }
                                 echo "
                                     <td>".$filas['ruta']."</td>
                                 </tr>

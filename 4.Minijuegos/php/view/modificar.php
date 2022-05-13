@@ -25,7 +25,7 @@
                 $filas = $controlador->filasModificar;
                 if (isset($filas)) {
                     echo "
-                        <form action='#' method='post'>
+                        <form action='#' method='post' enctype='multipart/form-data'>
                             <div class='title'>Modificación de Minijuegos</div>
                             <div class='subtitle'>Modificar datos</div>
                             <div class='input-container ic1'>
@@ -36,18 +36,36 @@
                         ";
                         if ($filas['icono']==NULL) {
                             echo "
-                                <div class='input-container ic2'>
-                                    <input class='input' type='text' placeholder=' ' name='icono' />
-                                    <div class='cut'></div>
-                                    <label for='icono' class='placeholder'>Icono</label>
-                                </div>  
+                                    <div class='hex-cell'>
+                                        <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
+                                    </div>
+                                    <input class='submit' type='submit' name='borrar_imagen' value='Borrar Imagen'>
+                                    <div class='input-container ic2'>
+                                        <div class='file-upload'>
+                                            <div class='file-upload-select'>
+                                                <div class='file-select-button' >Modificar imagen</div>
+                                                <div class='file-select-name'>No hay imagen...</div> 
+                                                <input type='file' name='icono' id='file-upload-input'>
+                                            </div>
+                                        </div>
+                                    </div> 
                             ";
                         }else{
                             echo "
+                                <div class='hex-cell'>
+                                    <object class='img_modificar' data='../../ficheros/".$filas['icono']."'>
+                                        <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
+                                    </object>
+                                </div>
+                                <input class='submit' type='submit' name='borrar_imagen' value='Borrar Imagen'>
                                 <div class='input-container ic2'>
-                                    <input class='input' type='text' value='".$filas['icono']."' name='icono' />
-                                    <div class='cut'></div>
-                                    <label for='icono' class='placeholder'>Icono</label>
+                                    <div class='file-upload'>
+                                        <div class='file-upload-select'>
+                                            <div class='file-select-button' >Modificar imagen</div>
+                                            <div class='file-select-name'>No hay imagen...</div> 
+                                            <input type='file' name='icono' id='file-upload-input'>
+                                        </div>
+                                    </div>
                                 </div>
                             ";
                         }
@@ -66,7 +84,6 @@
                             echo "<div class=error>Debe rellenar el nombre y el enlace.</div>";
                         }else{
                             echo "<div class=correcto>Datos introducidos correctamente.</div>";
-                            header("Location:controlador.php?accion=listar");
                         }
                     }
                 }else{
@@ -85,5 +102,6 @@
             }
         ?>   
     </div>    
+    <script src="../../js/inputFile.js"></script>
 </body>
 </html>

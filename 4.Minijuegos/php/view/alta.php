@@ -28,8 +28,8 @@
             <div class="input-container ic2">
                 <div class="file-upload">
                     <div class="file-upload-select">
-                        <div class="file-select-button" >Elegir archivo</div>
-                    <div class="file-select-name">No hay archivo...</div> 
+                        <div class="file-select-button" >Subir imagen</div>
+                    <div class="file-select-name">No hay imagen...</div> 
                         <input type="file" name="icono" id="file-upload-input">
                     </div>
                 </div>

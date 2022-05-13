@@ -53,7 +53,7 @@
             $this -> conex ->query($consulta2);
 
         }
-        function update($icono, $nombre, $enlace, $id){
+        function update($nombre, $icono, $enlace, $id){
 
             $consulta = "UPDATE minijuegos SET nombre = $nombre, icono = $icono, ruta = $enlace WHERE minijuegos.idMinijuego = $id;";
             try {
