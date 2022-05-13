@@ -148,11 +148,15 @@
                             $icono = "'$this->fichero_nombre'";
                             $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }elseif (empty($this->fichero_nombre)) {
-                            $icono = "'$this->fichero_nombre'";
-                            $this ->modelo -> update($nombre, $icono, $enlace);
+                            if (file_exists($this->fichero_nombre)) {
+                                $icono = "'$this->fichero_nombre'";
+                            }else{
+                                $icono = 'NULL';
+                            }
+                            $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }
                     }
-                    // header('Location: #');
+                    header('Location: #');
                 }
             }
         }
