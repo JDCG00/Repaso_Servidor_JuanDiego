@@ -147,9 +147,12 @@
                             }
                             $icono = "'$this->fichero_nombre'";
                             $this ->modelo -> update($nombre, $icono, $enlace, $id);
+                        }elseif (empty($this->fichero_nombre)) {
+                            $icono = "'$this->fichero_nombre'";
+                            $this ->modelo -> update($nombre, $icono, $enlace);
                         }
                     }
-                header('Location: #');
+                    // header('Location: #');
                 }
             }
         }
