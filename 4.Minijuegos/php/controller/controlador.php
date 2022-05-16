@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     class Controlador{
         public $modelo;
         public $filas;
@@ -124,7 +125,7 @@
                             if (file_exists($fichero)) {
                                 $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
                                 unlink($fichero);
-                                header("Location: http:controlador.php?accion=modificar&id=$idMinijuego");
+                                header("Location:controlador.php?accion=modificar&id=$idMinijuego");
                             }
                         }
                     }
@@ -158,7 +159,7 @@
                         }
                     }
                     $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
-                    header("Location: http:controlador.php?accion=modificar&id=$idMinijuego");
+                    header("Location:controlador.php?accion=modificar&id=$idMinijuego");
                 }
             }
         }
@@ -195,4 +196,5 @@
     }else{
         header("Location:../view/error.html");
     }
+    ob_end_flush();
 ?>
