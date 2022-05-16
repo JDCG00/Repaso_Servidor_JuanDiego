@@ -124,6 +124,10 @@
                             if (file_exists($fichero)) {
                                 $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
                                 unlink($fichero);
+                                $nombre = "'".$_POST['nombre']."'";
+                                $enlace = "'".$_POST['enlace']."'";
+                                $icono = 'NULL';
+                                $this -> modelo -> update($nombre, $icono, $enlace, $id);
                                 header("Location:controlador.php?accion=modificar&id=$idMinijuego");
                             }
                         }
@@ -147,15 +151,14 @@
                                 move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
                             }
                             $icono = "'$this->fichero_nombre'";
-                            $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }elseif (empty($this->fichero_nombre)) {
                             if (file_exists($this->fichero_subido)) {
                                 $icono = $ficheroNombre;
                             }else{
                                 $icono = 'NULL';
                             }
-                            $this ->modelo -> update($nombre, $icono, $enlace, $id);
                         }
+                        $this ->modelo -> update($nombre, $icono, $enlace, $id);
                     }
                     $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
                     header("Location:controlador.php?accion=modificar&id=$idMinijuego");

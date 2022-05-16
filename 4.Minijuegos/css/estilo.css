@@ -495,14 +495,23 @@ html {
 /*Mostrar imagen*/
 
 
-.hex-cell {
+.cell {
   overflow: hidden;
   grid-column-end: span 2;
   margin: calc(-1*var(--hl)) 0;
   transform: scale(0.95);
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
-
+.cell_listar {
+  overflow: hidden;
+  grid-column-end: span 2;
+  margin: calc(-1*var(--hl)) 0;
+  transform: scale(0.95);
+  width: 50%;
+}
+.td_img {
+  display: flex;
+  justify-content: center;
+}
 .img_modificar {
   --hl: 0;
   width: 100%;
@@ -514,4 +523,10 @@ html {
 }
 .img_modificar:hover {
   --hl: 1;
+}
+.img_listar{
+  
+}
+.contenedor_img_listar{
+  width: 60%;
 }

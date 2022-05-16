@@ -36,37 +36,28 @@
                         ";
                         if ($filas['icono']==NULL) {
                             echo "
-                                    <div class='hex-cell'>
-                                        <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
-                                    </div>
-                                    <div class='input-container ic2'>
-                                        <div class='file-upload'>
-                                            <div class='file-upload-select'>
-                                                <div class='file-select-button' >Modificar imagen</div>
-                                                <div class='file-select-name'>No hay imagen...</div> 
-                                                <input type='file' name='icono' id='file-upload-input'>
-                                            </div>
-                                        </div>
-                                    </div> 
+                                <div class='cell'>
+                                    <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
+                                </div>
                             ";
                         }else{
                             echo "
-                                <div class='hex-cell'>
-                                    <object class='img_modificar' data='../../ficheros/".$filas['icono']."'>
-                                        <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
-                                    </object>
-                                </div>
-                                <div class='input-container ic2'>
-                                    <div class='file-upload'>
-                                        <div class='file-upload-select'>
-                                            <div class='file-select-button' >Modificar imagen</div>
-                                            <div class='file-select-name'>No hay imagen...</div> 
-                                            <input type='file' name='icono' id='file-upload-input'>
-                                        </div>
-                                    </div>
+                                <div class='cell'>
+                                    <img class='img_modificar' src='../../ficheros/".$filas['icono']."' alt='Imagen no encontrada' />
                                 </div>
                             ";
                         }
+                        echo "
+                            <div class='input-container ic2'>
+                                <div class='file-upload'>
+                                    <div class='file-upload-select'>
+                                        <div class='file-select-button' >Modificar imagen</div>
+                                        <div class='file-select-name'>No hay imagen...</div> 
+                                        <input type='file' name='icono' id='file-upload-input'>
+                                    </div>
+                                </div>
+                            </div>
+                        ";
                         echo "
                             <div class='input-container ic2'>
                                 <input class='input' type='text' value='".$filas['ruta']."' name='enlace' />

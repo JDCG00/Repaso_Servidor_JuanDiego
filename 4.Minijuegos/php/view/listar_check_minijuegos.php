@@ -37,13 +37,13 @@
                                         <td>".$valor['nombre']."</td>
                                     ";
                                     if ($valor['icono'] == NULL) {
-                                        echo "<td>No hay imagen</td>";
+                                        echo "<td class='td_img'>No hay imagen</td>";
                                     }else{
                                         echo "
-                                            <td>
-                                                <object class='img_modificar' data='../../ficheros/".$valor['icono']."'>
-                                                    <img class='img_modificar' src='../../ficheros/imagen_no_encontrada.png' alt='Imagen no encontrada' />
-                                                </object>
+                                            <td class='td_img'>
+                                                <div class='cell_listar'>
+                                                    <img class='img_modificar' src='../../ficheros/".$valor['icono']."' alt='Imagen no encontrada' />
+                                                </div>
                                             </td>
                                         ";
                                     }
