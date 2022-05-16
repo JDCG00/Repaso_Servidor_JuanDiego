@@ -25,16 +25,17 @@
                 if(!empty($_POST['nombre'] && $_POST['enlace'])) {
                     $nombre = "'".$_POST['nombre']."'";
                     $enlace = "'".$_POST['enlace']."'";
-                    if (in_array($this->fichero_tipo, $this->permitido)) {
-                        if (strlen($this->fichero_nombre) <= 40) {
-                            move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                    if (!empty($this->fichero_nombre)) {
+                        if (in_array($this->fichero_tipo, $this->permitido)) {
+                            if (strlen($this->fichero_nombre) <= 40) {
+                                move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                            }
+                            $icono = "'$this->fichero_nombre'";
                         }
-                        $icono = "'$this->fichero_nombre'";
-                        $this ->modelo -> insertar($nombre, $icono, $enlace);
-                    }elseif (empty($this->fichero_nombre)) {
+                    }else {
                         $icono = 'NULL';
-                        $this ->modelo -> insertar($nombre, $icono, $enlace);
                     }
+                    $this ->modelo -> insertar($nombre, $icono, $enlace);
                 }                
             }
         }
@@ -121,13 +122,13 @@
                     $fichero = $this -> ruta . $ficheroNombre;
                     if ($ficheroNombre != NULL) {
                         if (isset($_POST['borrar_imagen'])) {
-                            if (file_exists($fichero)) {
+                            $nombre = "'".$_POST['nombre']."'";
+                            $enlace = "'".$_POST['enlace']."'";
+                            if (is_file($fichero)) {
                                 $idMinijuego = $this -> modelo -> filasBorrarMod['idMinijuego'];
                                 unlink($fichero);
-                                $nombre = "'".$_POST['nombre']."'";
-                                $enlace = "'".$_POST['enlace']."'";
                                 $icono = 'NULL';
-                                $this -> modelo -> update($nombre, $icono, $enlace, $id);
+                                $this ->modelo -> update($nombre, $icono, $enlace, $id);
                                 header("Location:controlador.php?accion=modificar&id=$idMinijuego");
                             }
                         }
@@ -146,17 +147,22 @@
                     if(!empty($_POST['nombre'] && $_POST['enlace'])) {
                         $nombre = "'".$_POST['nombre']."'";
                         $enlace = "'".$_POST['enlace']."'";
-                        if (in_array($this->fichero_tipo, $this->permitido)) {
-                            if (strlen($this->fichero_nombre) <= 40) {
-                                move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                        if (!empty($this->fichero_nombre)) {
+                            if (in_array($this->fichero_tipo, $this->permitido)) {
+                                if (strlen($this->fichero_nombre) <= 40) {
+                                    move_uploaded_file($this->fichero_tmp, $this->fichero_subido);
+                                }
+                                $icono = "'$this->fichero_nombre'";
                             }
-                            $icono = "'$this->fichero_nombre'";
-                        }elseif (empty($this->fichero_nombre)) {
-                            if (file_exists($this->fichero_subido)) {
-                                $icono = $ficheroNombre;
-                            }else{
-                                $icono = 'NULL';
-                            }
+                        }else {
+                            if (isset($this -> modelo -> filasBorrarMod['icono'])) {
+                                $fichero_subido_nombrebd = $this -> ruta . $ficheroNombre;
+                                if(is_file($fichero_subido_nombrebd)) {
+                                    $icono = "'$ficheroNombre'";
+                                }else{
+                                    $icono = 'NULL';
+                                }
+                            }                            
                         }
                         $this ->modelo -> update($nombre, $icono, $enlace, $id);
                     }
