@@ -56,7 +56,6 @@
         function update($nombre, $icono, $enlace, $id){
 
             $consulta = "UPDATE minijuegos SET nombre = $nombre, icono = $icono, ruta = $enlace WHERE minijuegos.idMinijuego = $id;";
-            echo $consulta;
             try {
                 $this->conex -> query($consulta);
             } catch (mysqli_sql_exception $e) {

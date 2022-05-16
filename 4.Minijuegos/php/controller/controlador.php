@@ -1,5 +1,4 @@
 <?php
-    ob_start();
     class Controlador{
         public $modelo;
         public $filas;
@@ -167,6 +166,7 @@
 
     $controlador = new Controlador;
     if (isset($_GET['accion'])) {
+        ob_start();
         switch ($_GET['accion']) {
             case 'alta':
                 $controlador->altaVista();
