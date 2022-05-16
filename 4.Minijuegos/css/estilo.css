@@ -524,9 +524,6 @@ html {
 .img_modificar:hover {
   --hl: 1;
 }
-.img_listar{
-  
-}
 .contenedor_img_listar{
   width: 60%;
 }
