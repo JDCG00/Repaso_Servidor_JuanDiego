@@ -35,7 +35,7 @@ CREATE TABLE categorias(
 );
 CREATE TABLE palabras(
     idPalabra INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombre VARCHAR(100) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     idCategoria SMALLINT UNSIGNED NOT NULL,
     CONSTRAINT FK_Categoria FOREIGN KEY (idCategoria) REFERENCES categorias(idCategoria)
 );
