@@ -23,11 +23,10 @@ CREATE TABLE ejercicios(
     idEjercicio INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(120) NOT NULL, 
     descripcion VARCHAR(300) NULL,
-    tipo CHAR(1) NOT NULL,
+    tipo CHAR(1) NOT NULL CHECK (tipo IN ('l', 'c')),
     fechaHora DATETIME NOT NULL DEFAULT NOW(),
     idClase SMALLINT UNSIGNED NOT NULL,
-    codEjercicio CHAR(6) UNIQUE NOT NULL,
-    CHECK (tipo IN ('l', 'c')),
+    codEjercicio CHAR(6) UNIQUE NOT NULL,    
     CONSTRAINT FK_Clase FOREIGN KEY (idClase) REFERENCES clases(idClase)
 );
 CREATE TABLE categorias(
@@ -44,13 +43,13 @@ CREATE TABLE usuarios_clases(
     idUsuario INT UNSIGNED NOT NULL,
     idClase SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idUsuario, idClase),
-    CONSTRAINT FK_UsuarioClase FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
-    CONSTRAINT FK_ClaseUsuario FOREIGN KEY (idClase) REFERENCES clases(idClase)
+    CONSTRAINT FK_Usuario FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
+    CONSTRAINT FK_Clase2 FOREIGN KEY (idClase) REFERENCES clases(idClase)
 );
 CREATE TABLE ejercicios_palabras(
     idEjercicio INT UNSIGNED NOT NULL,
-    idPalabra SMALLINT UNSIGNED NOT NULL,
+    idPalabra INT UNSIGNED NOT NULL,
     PRIMARY KEY (idEjercicio, idPalabra),
-    CONSTRAINT FK_EjercicioPalabra FOREIGN KEY (idEjercicio) REFERENCES ejercicios(idEjercicio),
-    CONSTRAINT FK_PalabraEjercicio FOREIGN KEY (idPalabra) REFERENCES palabras(idPalabra)
+    CONSTRAINT FK_Ejercicio FOREIGN KEY (idEjercicio) REFERENCES ejercicios(idEjercicio),
+    CONSTRAINT FK_Palabra FOREIGN KEY (idPalabra) REFERENCES palabras(idPalabra)
 );
